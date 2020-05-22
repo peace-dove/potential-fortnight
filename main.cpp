@@ -49,14 +49,14 @@ int bfs()
 
             if(check(next.x,next.y))
             {
-                /*if(next.x==target.x&&next.y==target.y)
+                if(next.x==target.x&&next.y==target.y)
                 {
                     steps[next.x][next.y]=steps[start.x][start.y]+1;
                     minsteps=min(minsteps,steps[next.x][next.y]);
                     //continue;
                     cout<<minsteps<<endl;
                 }
-                else**
+                else
                 {
                     visited[next.x][next.y]=true;
 
@@ -104,8 +104,6 @@ int main()
     return 0;
 }
 */
-
-
 
 #include <bits/stdc++.h>
 
