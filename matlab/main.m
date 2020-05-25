@@ -25,7 +25,7 @@ output=[output1' output2'];
 
 %% 数据归一化
 [inputn,inputnps]=mapminmax(input,0,1);
-[outputn,outoutnps]=mapminmax(output,0,1);
+[outputn,outputnps]=mapminmax(output,0,1);
 %% 训练神经网络
 net=feedforwardnet(10);
 % net=feedforwardnet(15);
@@ -77,4 +77,7 @@ out2=xlsread('white.xlsx','Sheet 1','A1200:A1250');
 outputt=[out1' out2'];
 %mse=std(ty-outputt);
 y=net(testinputn);
-perf=perform(net,y,outputt)
+perf=perform(net,y,outputt);%这里其实没有归一化再比较处理
+%% 数据的反归一化
+yy=mapminmax('reverse',y,outputnps);
+perf2=perform(net,yy,outputt);
