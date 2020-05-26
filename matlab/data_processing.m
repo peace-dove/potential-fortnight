@@ -1,13 +1,15 @@
-%% Çå¿Õ»·¾³±äÁ¿
+%% æ•°æ®æ¥æº https://archive.ics.uci.edu/ml/datasets/wine+quality æ•°æ®é›†
+
+%% æ¸…ç©ºç¯å¢ƒå˜é‡
 clear
 clc
 
-%% ¶ÔÃ¿Ò»¸öÎïÀí»¯Ñ§ÊôĞÔ½øĞĞ¶Ô±È£¬Ò»¸ö×ö´ú±í£¬ÆäÓà×¢ÊÍ£¬±ãÓÚÖğÏî±È½Ï
-%% ±È½ÏÊ±¿ÉÒÔÊÖ¹¤½«¸Ã¶Î´úÂëÈ¡Ïû×¢ÊÍ£¬ÔÙ½«ÆäËûËùÓĞ²¿·Ö×¢ÊÍ
+%% å¯¹æ¯ä¸€ä¸ªç‰©ç†åŒ–å­¦å±æ€§è¿›è¡Œå¯¹æ¯”ï¼Œä¸€ä¸ªåšä»£è¡¨ï¼Œå…¶ä½™æ³¨é‡Šï¼Œä¾¿äºé€é¡¹æ¯”è¾ƒ
+%% æ¯”è¾ƒæ—¶å¯ä»¥æ‰‹å·¥å°†è¯¥æ®µä»£ç å–æ¶ˆæ³¨é‡Šï¼Œå†å°†å…¶ä»–æ‰€æœ‰éƒ¨åˆ†æ³¨é‡Š
 %% fixed acidity
 t1=xlsread('red.xlsx','Sheet 1','B2:B1600');
 %t2=xlsread('white.xlsx','Sheet 1','B2:B4899');
-t2=xlsread('white.xlsx','Sheet 1','B2:B1600'); % ¶ÔÍ¬Ò»Êı¾İÁ¿µÄ·Ö²¼±È½Ï
+t2=xlsread('white.xlsx','Sheet 1','B2:B1600'); % å¯¹åŒä¸€æ•°æ®é‡çš„åˆ†å¸ƒæ¯”è¾ƒ
 subplot(1,2,1);
 hist(t1,20);
 title('the fixed acidity of red wine');
@@ -113,8 +115,8 @@ title('the fixed acidity of white wine');
 % subplot(1,2,2);
 % hist(t2,6);
 % title('the quality of white wine');
-%% Êı¾İÏà¹ØĞÔ·ÖÎö
-%% Êı¾İµ¼Èë
+%% æ•°æ®ç›¸å…³æ€§åˆ†æ
+%% æ•°æ®å¯¼å…¥
 t1=xlsread('red.xlsx','Sheet 1','C2:C1000');
 t2=xlsread('red.xlsx','Sheet 1','D2:D1000');
 t3=xlsread('red.xlsx','Sheet 1','E2:E1000');
@@ -136,5 +138,5 @@ output2=xlsread('white.xlsx','Sheet 1','A2:A1000');
 output=[output1' output2'];
 
 d=[input;output];
-c=cov(d);%»áµÃµ½Ğ­·½²î¾ØÕóºÍÏà¹ØÏµÊı¾ØÕó
-r=corrcoef(d);%¾ØÕó·Ç³£´ó£¬Ö»ÊÇ¾Ù¸öÀı×Ó
+c=cov(d);%ä¼šå¾—åˆ°åæ–¹å·®çŸ©é˜µå’Œç›¸å…³ç³»æ•°çŸ©é˜µ
+r=corrcoef(d);%çŸ©é˜µéå¸¸å¤§ï¼Œåªæ˜¯ä¸¾ä¸ªä¾‹å­
