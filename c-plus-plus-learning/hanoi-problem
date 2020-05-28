@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void hanoi(int n,char from,char by,char to);//将n-1个盘子从from经过by放到to，并且从小到大对应第几个盘子
+int main()
+{
+    int n;
+    char from,by,to;
+    scanf("%d %c %c %c",&n,&from,&by,&to);
+    hanoi(n,from,by,to);
+    return 0;
+}
+void hanoi(int n,char from,char by,char to)
+{
+    if(n==1)
+    {
+        printf("%d:%c->%c\n",n,from,to);
+    }
+    else
+    {
+        hanoi(n-1,from,to,by);
+        printf("%d:%c->%c\n",n,from,to);
+        hanoi(n-1,by,from,to);
+    }
+}
+c plus
