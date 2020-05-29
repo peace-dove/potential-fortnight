@@ -1,146 +1,112 @@
-#include <iostream>
-#include <cmath>
+#include<iostream>
+#include<cmath>
+#include<string.h>
+#define EPS 1e-6
 using namespace std;
 
-int N;
-int queenPos[100];//用来存放算好的皇后位置。最左上角是(0,0)
+double a[5];
 
-int a[93]= {15863724,
-            16837425,
-            17468253,
-            17582463,
-            24683175,
-            25713864,
-            25741863,
-            26174835,
-            26831475,
-            27368514,
-            27581463,
-            28613574,
-            31758246,
-            35281746,
-            35286471,
-            35714286,
-            35841726,
-            36258174,
-            36271485,
-            36275184,
-            36418572,
-            36428571,
-            36814752,
-            36815724,
-            36824175,
-            37285146,
-            37286415,
-            38471625,
-            41582736,
-            41586372,
-            42586137,
-            42736815,
-            42736851,
-            42751863,
-            42857136,
-            42861357,
-            46152837,
-            46827135,
-            46831752,
-            47185263,
-            47382516,
-            47526138,
-            47531682,
-            48136275,
-            48157263,
-            48531726,
-            51468273,
-            51842736,
-            51863724,
-            52468317,
-            52473861,
-            52617483,
-            52814736,
-            53168247,
-            53172864,
-            53847162,
-            57138642,
-            57142863,
-            57248136,
-            57263148,
-            57263184,
-            57413862,
-            58413627,
-            58417263,
-            61528374,
-            62713584,
-            62714853,
-            63175824,
-            63184275,
-            63185247,
-            63571428,
-            63581427,
-            63724815,
-            63728514,
-            63741825,
-            64158273,
-            64285713,
-            64713528,
-            64718253,
-            68241753,
-            71386425,
-            72418536,
-            72631485,
-            73168524,
-            73825164,
-            74258136,
-            74286135,
-            75316824,
-            82417536,
-            82531746,
-            83162574,
-            84136275
-           };
+bool iszero(double x)
+{
+    return fabs(x)<=EPS;
+}
+bool count24(double a[],int n)
+{
+    if(n==1)
+        if(iszero(a[0]-24))
+            return true;
+        else
+            return false;
+    else
+    {
+        double b[5]= {0};
+        for(int i=0; i<n-1; ++i)
+            for(int j=i+1; j<n; ++j)
+            {
+                int m=0;
+                for(int k=0; k<n; ++k)
+                {
+                    if((k!=i)&&(k!=j))
+                        b[m++]=a[k];
+                }
+                b[m]=a[i]+a[j];
+                if(count24(b,n-1))
+                    return true;
 
+                b[m]=a[i]-a[j];
+                if(count24(b,n-1))
+                    return true;
 
-void NQueen(int k);
+                b[m]=a[j]-a[i];
+                if(count24(b,n-1))
+                    return true;
 
+                b[m]=a[i]*a[j];
+                if(count24(b,n-1))
+                    return true;
+
+                if(a[j]!=0)
+                {
+                    b[m]=a[i]/a[j];
+                    if(count24(b,n-1))
+                        return true;
+                }
+
+                if(a[i]!=0)
+                {
+                    b[m]=a[j]/a[i];
+                    if(count24(b,n-1))
+                        return true;
+                }
+            }
+    }
+    return false;
+}
+bool judge(double a[],int n)
+{
+    int cnt=0;
+    for(int i=0; i<n; ++i)
+        if(iszero(a[i]))
+            cnt++;
+    if(cnt==n)
+        return false;
+    else
+        return true;
+}
+/*int main()
+{
+    for(int i=0; i<4; ++i)
+        cin>>a[i];
+    while(judge(a,4))
+    {
+        if(count24(a,4))
+            cout<<"Yes"<<endl;
+        else
+            cout<<"No"<<endl;
+      for(int i=0; i<4; ++i)
+        cin>>a[i];
+    }
+
+    return 0;
+}*/
 int main()
 {
-    cin>>N;
-    //NQueen(0); //从第0行开始摆皇后
-    while(N--)
+    while(true)
     {
-        int t;
-        cin>>t;
-        cout<<a[t-1]<<endl;
+        bool isend=true;
+        for(int i=0; i<4; ++i)
+        {
+            cin>>a[i];
+            if(!iszero(a[i]))
+                isend=false;
+        }
+        if(isend)
+            break;
+        if(count24(a,4))
+            cout<<"Yes"<<endl;
+        else
+            cout<<"No"<<endl;
+
     }
     return 0;
-}
-void NQueen(int k) //在0~k-1行皇后已经摆好的情况下，摆第k行及其后的皇后
-{
-    int i;
-    if(k==N) // N 个皇后已经摆好
-    {
-        for(i=0;i<N;i++)
-            cout<<queenPos[i]+1 ;
-        cout<<endl;
-        return;
-    }
-    for( i = 0; i < N; i ++ ) //逐一尝试第k个皇后所在的列i.
-    {
-        int j;
-        for( j = 0; j < k; j ++ )
-        {
-            //和已经摆好的 k个皇后的位置比较，看是否冲突
-            //queenPos[j] == i表示第j个皇后所在的列queenPos[j]与第k个皇后所在的列i相等
-            //abs(queenPos[j] - i) == abs(k-j)表示第k个皇后和第j个皇后在同一个斜线（行之差与列之差绝对值相等）
-            if( queenPos[j] == i || abs(queenPos[j] - i) == abs(k-j))
-            {
-                break; //冲突，则试下一个位置
-            }
-        }
-        if( j == k )  //当前选的位置 i 不冲突
-        {
-            queenPos[k] = i; //将第k个皇后摆放在第i列
-            NQueen(k+1);
-        }
-    } //for( i = 0;i < N;i ++ )
 }
