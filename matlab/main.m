@@ -1,8 +1,8 @@
-%% Çå¿Õ»·¾³±äÁ¿
+%% æ¸…ç©ºç¯å¢ƒå˜é‡ ç¬¬ä¸€æ¬¡è¿è¡Œå¯èƒ½éœ€è¦è¾ƒé•¿çš„æ—¶é—´æ¥è°ƒç”¨ç½‘ç»œ
 clear
 clc
 
-%% ÑµÁ·¼¯
+%% è®­ç»ƒé›†
 t1=xlsread('red.xlsx','Sheet 1','C2:C1000');
 t2=xlsread('red.xlsx','Sheet 1','D2:D1000');
 t3=xlsread('red.xlsx','Sheet 1','E2:E1000');
@@ -23,10 +23,10 @@ output1=xlsread('red.xlsx','Sheet 1','A2:A1000');
 output2=xlsread('white.xlsx','Sheet 1','A2:A1000');
 output=[output1' output2'];
 
-%% Êı¾İ¹éÒ»»¯
+%% æ•°æ®å½’ä¸€åŒ–
 [inputn,inputnps]=mapminmax(input,0,1);
 [outputn,outputnps]=mapminmax(output,0,1);
-%% ÑµÁ·Éñ¾­ÍøÂç
+%% è®­ç»ƒç¥ç»ç½‘ç»œ
 net=feedforwardnet(10);
 % net=feedforwardnet(15);
 % net=feedforwardnet(5);
@@ -41,12 +41,12 @@ net=train(net,inputn,outputn);
 time=toc;
 disp(['the time is',num2str(time),'s']);
 
-%% ÍøÂç½á¹¹
+%% ç½‘ç»œç»“æ„
 % view(net);
 % y = net(input);
 % perf = perform(net,y,output)
 
-%% ²âÊÔÊı¾İ
+%% æµ‹è¯•æ•°æ®
 % tt1=xlsread('red.xlsx','Sheet 1','B1400:B1500');
 % tt2=xlsread('red.xlsx','Sheet 1','C1400:C1500');
 % tt3=xlsread('red.xlsx','Sheet 1','D1400:D1500');
@@ -71,13 +71,13 @@ tw6=xlsread('white.xlsx','Sheet 1','L1200:L1250');
 testinput=[[tr1' tw1'];[tr2' tw2'];[tr3' tw3'];[tr4' tw4'];[tr5' tw5'];[tr6' tw6']];
 [testinputn,testinputnps]=mapminmax(testinput,0,1);
 ty=round(sim(net,testinputn));
-%% ²âÊÔÊı¾İ·ÖÎö
+%% æµ‹è¯•æ•°æ®åˆ†æ
 out1=xlsread('red.xlsx','Sheet 1','A1200:A1250');
 out2=xlsread('white.xlsx','Sheet 1','A1200:A1250');
 outputt=[out1' out2'];
 %mse=std(ty-outputt);
 y=net(testinputn);
-perf=perform(net,y,outputt);%ÕâÀïÆäÊµÃ»ÓĞ¹éÒ»»¯ÔÙ±È½Ï´¦Àí
-%% Êı¾İµÄ·´¹éÒ»»¯
+perf=perform(net,y,outputt);%è¿™é‡Œå…¶å®æ²¡æœ‰å½’ä¸€åŒ–å†æ¯”è¾ƒå¤„ç†
+%% æ•°æ®çš„åå½’ä¸€åŒ–
 yy=mapminmax('reverse',y,outputnps);
 perf2=perform(net,yy,outputt);
