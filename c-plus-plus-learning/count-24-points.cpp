@@ -76,7 +76,7 @@ bool judge(double a[],int n)
     else
         return true;
 }
-/*int main()
+int main()//this maybe better because it is more stable maybe
 {
     for(int i=0; i<4; ++i)
         cin>>a[i];
@@ -91,7 +91,8 @@ bool judge(double a[],int n)
     }
 
     return 0;
-}*/
+}
+/*
 int main()
 {
     while(true)
@@ -113,3 +114,4 @@ int main()
     }
     return 0;
 }
+*/
