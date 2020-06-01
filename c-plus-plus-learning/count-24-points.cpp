@@ -1,3 +1,6 @@
+//input 4 numbers like 2 3 4 5 and is this can be counted to 24 point it will output Yes
+//if not it will output No
+//to end the procedure just input 0 0 0 0
 #include<iostream>
 #include<cmath>
 #include<string.h>
