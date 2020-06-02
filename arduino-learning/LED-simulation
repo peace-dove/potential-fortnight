@@ -79,6 +79,7 @@ void loop() {
 		case 1://东西向绿灯与南北向红灯亮
 			digitalWrite(GREEN_A,HIGH);
 			digitalWrite(RED_B,HIGH);
+			Operation_Type++;
 			break;
 		case 2://东西向黄灯开始闪烁,绿灯关闭
 			digitalWrite(GREEN_A,LOW);
@@ -96,10 +97,12 @@ void loop() {
 			BlinkLED(YELLOW_A，&YELLOW_State)；
 			BlinkLED(YELLOW_A，&YELLOW_State)；
 			BlinkLED(YELLOW_A，&YELLOW_State)；
+			Operation_Type++;
 			break;
 		case 3://东西向红灯与南北向绿灯亮
 			digitalWrite(RED_A,HIGH);
 			digitalWrite(GREEN_B,HIGH);
+			Operation_Type++;
 			break;
 		case 4://南北向黄灯开始闪烁
 			BlinkLED(YELLOW_B，&YELLOW_State)；
@@ -112,6 +115,8 @@ void loop() {
 			BlinkLED(YELLOW_B，&YELLOW_State)；
 			BlinkLED(YELLOW_B，&YELLOW_State)；
 			BlinkLED(YELLOW_B，&YELLOW_State)；
+			Operation_Type=1;
+			//break;
 	}
 }
 
