@@ -1,0 +1,57 @@
+//input number N
+//output N numbers including 0 and 1
+//0 can be adjacent but 1 cannot
+//in the last line will output total counts of number groups
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    void sot(int a[],int n,int N);
+    int cnt(int n);
+    int n;
+    scanf("%d",&n);
+    int a[n+1];
+    for(int i=1; i<n+1; i++)
+        a[i]=0;
+    int N=n;
+    sot(a,n,N);
+    printf("%d",cnt(n));
+    return 0;
+}
+
+void sot(int a[],int n,int N)
+{
+    if(n==0)
+    {
+        for(int i=N; i>0; i--)
+            printf("%d",a[i]);
+        printf("\n");
+    }
+    else if(n==1)
+    {
+        a[1]=0;
+        sot(a,0,N);
+        a[1]=1;
+        sot(a,0,N);
+    }
+    else
+    {
+        a[n]=0;
+        sot(a,n-1,N);
+        a[n]=1;
+        a[n-1]=0;
+        sot(a,n-2,N);
+    }
+
+}
+int cnt(int n)
+{
+    if(n==0)
+        return 1;
+    else if(n==1)
+        return 2;
+    else
+        return cnt(n-1)+cnt(n-2);
+}
