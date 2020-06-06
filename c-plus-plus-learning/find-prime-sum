@@ -1,0 +1,39 @@
+//Goldbach conjecture
+//to find two prime number which can sum up even number
+#include<bits/stdc++.h>
+using namespace std;
+int main(void)
+
+{
+    int su(int x);
+    long int N;
+    int i;
+    scanf("%d",&N);
+    for(i=2;;i++)
+    {
+        if(su(i)&&su(N-i))
+        {
+            printf("%d = %d + %d",N,i,N-i);
+            break;
+        }
+    }
+    return 0;
+}
+
+int su(int x)
+{
+    int a=0;
+    for(int i=2; i<=sqrt(x); i++)
+    {
+        if(x%i==0)
+        {
+            a=1;
+            break;
+        }
+    }
+
+    if(a==0)
+        return 1;
+    else
+        return 0;
+}
