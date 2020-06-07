@@ -1,0 +1,46 @@
+//use dichotomy to find polynomial roots
+//the polynomial is like a3*x^3+a2*x^2+a1*x+a0
+//the root section is from a to b
+#include<bits/stdc++.h>
+using namespace std;
+
+float a3,a2,a1,a0;
+float f(float x);
+int main()
+{
+    float a,b;
+    scanf("%f %f %f %f %f %f",&a3,&a2,&a1,&a0,&a,&b);
+    float left,right,mid;
+    left=a;
+    right=b;
+    while(right-left>0.001&&f(right)*f(left)<=0)
+    {
+        if(f(left)==0)
+        {
+            printf("%.2f",left);
+            return 0;
+        }
+        if(f(right)==0)
+        {
+            printf("%.2f",right);
+            return 0;
+        }
+        mid=(left+right)/2;
+        if(f(left)*f(mid)>0)
+        {
+            left=mid;
+        }
+        else
+        {
+            right=mid;
+        }
+    }
+    printf("%.2f",(left+right)/2);
+    return 0;
+}
+float f(float x)
+{
+    float f1;
+    f1=a3*x*x*x+a2*x*x+a1*x+a0;
+    return f1;
+}
