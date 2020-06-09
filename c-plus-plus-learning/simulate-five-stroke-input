@@ -1,0 +1,63 @@
+//simulate five stroke input method
+#include<bits/stdc++.h>
+using namespace std;
+
+char a[10][10]= {"00 ","01,.?!","02ABC","03DEF","04GHI","05JKL","06MNO","07PQRS","08TUV","09WXYZ"};
+char b[5151];
+
+int t;//length of string
+int sum=0;
+int s;
+int flag=1;
+
+void clearall()
+{
+    sum=0;
+    flag=0;
+}
+
+int main()
+{
+    while(gets(b))
+    {
+        t=strlen(b);
+        b[t++]=' ';
+        for(int i=0; i<=t; i++)
+        {
+            if(b[i]!=' ')
+            {
+                sum++;
+                s=b[i]-'0';
+                flag=1;
+            }
+            else if(b[i]==' '&&flag)
+            {
+                if(s==0)
+                {
+                    sum=sum%2;
+                    if(sum==0)
+                        sum=2;
+                }
+                else if(s==2||s==3||s==4||s==5||s==6||s==8)
+                {
+                    sum=sum%4;
+                    if(sum==0)
+                        sum=4;
+                }
+                else if(s==1||s==7||s==9)
+                {
+                    sum=sum%5;
+                    if(sum==0)
+                        sum=5;
+                }
+                //printf("%d %d \n",s,sum);
+                printf("%c",a[s][sum]);
+                sum=0;
+                flag=0;
+            }
+        }
+        printf("\n");
+        clearall();
+    }
+    return 0;
+}
