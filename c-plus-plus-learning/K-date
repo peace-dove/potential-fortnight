@@ -1,0 +1,31 @@
+//please input like 2020/06/10 not 2020/6/10
+//or can add some function to realize different input format
+#include<stdio.h>
+struct date
+{
+    int year;
+    int month;
+    int day;
+    long int index;
+} a[1002],t;
+int main()
+{
+    int n,k,i,j;
+    scanf("%d",&n);
+    for(i=1; i<=n; i++)
+    {
+        scanf("%4d/%2d/%2d",&a[i].year,&a[i].month,&a[i].day);
+        a[i].index=a[i].day+(a[i].month-1)*30+a[i].year*365;
+    }
+    scanf("%d",&k);
+    for(i=1; i<n; i++)
+        for(j=1; j<=n-i; j++)
+            if(a[j].index>a[j+1].index)
+            {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+    printf("%4d/%02d/%02d",a[k].year,a[k].month,a[k].day);
+    return 0;
+}
