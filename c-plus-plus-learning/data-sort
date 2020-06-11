@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main()
+{
+    char a[3];
+    while(~scanf("%s",a))
+    {
+        if(a[0]>a[1])
+        {
+            int t=a[0];
+            a[0]=a[1];
+            a[1]=t;
+        }
+        if(a[0]>a[2])
+        {
+            int t=a[0];
+            a[0]=a[2];
+            a[2]=t;
+        }
+        if(a[1]>a[2])
+        {
+            int t=a[1];
+            a[1]=a[2];
+            a[2]=t;
+        }
+        printf("%c %c %c\n",a[0],a[1],a[2]);
+    }
+    return 0;
+}
