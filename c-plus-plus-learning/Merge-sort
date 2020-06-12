@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+void mergesort(int l,int r);
+void Merge(int l,int mid,int r);
+
+long int a[100005],b[100005],cnt;
+
+int main()
+{
+    int n,k;
+    cin>>n;//the number of what aims to be put in
+    for(int i=0; i<n; ++i)
+        cin>>a[i];
+    //cin>>k;
+
+    mergesort(0,n-1);
+
+    for(int i=0; i<n; ++i)
+    {
+        cout<<a[i];
+        cout<<'\n';
+    }
+
+    cout<<cnt;
+    return 0;
+}
+void mergesort(int l,int r)
+{
+    if(l<r)
+    {
+        int mid=l+(r-l)/2;
+        mergesort(l,mid);
+        mergesort(mid+1,r);
+        Merge(l,mid,r);
+    }
+}
+void Merge(int l,int mid,int r)
+{
+    int i=l,j=mid+1,t=0;
+    while(i<=mid&&j<=r)
+    {
+        if(a[i]>a[j])
+        {
+            b[t++]=a[j++];
+            cnt+=mid-i+1;
+
+        }
+        else
+        {
+            b[t++]=a[i++];
+
+        }
+    }
+    while(i<=mid)
+        b[t++]=a[i++];
+    while(j<=r)
+        b[t++]=a[j++];
+    for(i=0; i<t; i++)
+        a[l+i]=b[i];
+}
