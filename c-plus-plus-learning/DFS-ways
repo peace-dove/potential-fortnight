@@ -2,6 +2,10 @@
 //still have some problems
 //input n and output how many situations will be
 //only turn left right and down
+
+//update: input n can just out put (n+1)*(n+2)/2
+//the question is vague
+
 #include <bits/stdc++.h>
 
 using namespace std;
