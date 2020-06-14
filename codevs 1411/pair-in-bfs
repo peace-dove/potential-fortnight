@@ -1,0 +1,119 @@
+//use pair to solve bfs problem
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*void displaystack(stack<int>s)
+{
+    while(!s.empty())// while s is not empty
+    {
+        cout<<s.top()<<'\n';
+        s.pop();
+    }
+}
+void display(queue<int>q)
+{
+    queue<int>c=q;
+    while(!c.empty())
+    {
+        cout<<" "<<c.front();
+        c.pop();
+    }
+    cout<<"\n";
+}
+*/
+int bfs();
+
+int cnt,n,m;
+char s[102][102];
+int visited[102][102],dist[102][102],maxdist;
+
+pair<int,int> start,t;
+queue<pair<int,int> > q;
+
+int direction[8][2]= { {-1,0},
+    {0,1},
+    {1,0},
+    {0,-1},
+    {-1,-1},
+    {-1,1},
+    {1,-1},
+    {1,1}
+};
+
+
+int check(int x,int y)
+{
+    return x>0&&x<=n&&y>0&&y<=m&&visited[x][y]==0&&s[x][y]!='*';
+}
+
+int main()
+{
+
+    //cin>>m>>n>>start.second>>start.first;
+    scanf("%d%d%d%d\n",&m,&n,&start.second,&start.first);
+    for(int i=n; i>=1; i--)
+    {
+        for(int j=1; j<=m; j++)
+        {
+            s[i][j]=getchar();
+            if(s[i][j]=='.')
+                cnt++;
+        }
+        getchar();
+    }
+    if(s[start.first][start.second]=='.')
+        cnt--;
+    bfs();
+    cout<<maxdist;
+    return 0;
+}
+
+/*int getintsum(int x)
+{
+    int s=0;
+    while(x)
+    {
+        s+=x%10;
+        x/=10;
+    }
+    return s;
+}
+
+int getpairsum(pair<int,int>p)
+{
+    int s=0;
+    s+=getintsum(p.first);
+    s+=getintsum(p.second);
+    return s;
+}
+*/
+int bfs()
+{
+    q.push(start);
+
+    dist[start.first][start.second]=0;
+    visited[start.first][start.second]=1;
+    while(q.size())
+    {
+        t=q.front();
+        q.pop();
+
+        for(int i=0; i<8; i++)
+        {
+            int x=t.first+direction[i][0],y=t.second+direction[i][1];
+            if(check(x,y))
+            {
+                cnt--;
+                visited[x][y]=1;
+                dist[x][y]=dist[t.first][t.second]+1;
+                maxdist=max(maxdist,dist[x][y]);
+                q.push(make_pair(x,y));
+                if(cnt==0)
+                    return 1;
+            }
+
+        }
+    }
+    return 0;
+}
