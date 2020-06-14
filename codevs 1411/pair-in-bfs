@@ -1,27 +1,7 @@
 //use pair to solve bfs problem
 #include <bits/stdc++.h>
-
 using namespace std;
 
-/*void displaystack(stack<int>s)
-{
-    while(!s.empty())// while s is not empty
-    {
-        cout<<s.top()<<'\n';
-        s.pop();
-    }
-}
-void display(queue<int>q)
-{
-    queue<int>c=q;
-    while(!c.empty())
-    {
-        cout<<" "<<c.front();
-        c.pop();
-    }
-    cout<<"\n";
-}
-*/
 int bfs();
 
 int cnt,n,m;
@@ -69,25 +49,6 @@ int main()
     return 0;
 }
 
-/*int getintsum(int x)
-{
-    int s=0;
-    while(x)
-    {
-        s+=x%10;
-        x/=10;
-    }
-    return s;
-}
-
-int getpairsum(pair<int,int>p)
-{
-    int s=0;
-    s+=getintsum(p.first);
-    s+=getintsum(p.second);
-    return s;
-}
-*/
 int bfs()
 {
     q.push(start);
