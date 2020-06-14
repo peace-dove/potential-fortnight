@@ -1,0 +1,42 @@
+//display what stack has
+void displaystack(stack<int>s)
+{
+    while(!s.empty())// while s is not empty
+    {
+        cout<<s.top()<<'\n';
+        s.pop();
+    }
+}
+
+//display what queen has
+void display(queue<int>q)
+{
+    queue<int>c=q;
+    while(!c.empty())
+    {
+        cout<<" "<<c.front();
+        c.pop();
+    }
+    cout<<"\n";
+}
+
+//to count the sum of each number
+int getintsum(int x)
+{
+    int s=0;
+    while(x)
+    {
+        s+=x%10;
+        x/=10;
+    }
+    return s;
+}
+
+//forget why to write this
+int getpairsum(pair<int,int>p)
+{
+    int s=0;
+    s+=getintsum(p.first);
+    s+=getintsum(p.second);
+    return s;
+}
