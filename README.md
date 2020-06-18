@@ -7,4 +7,4 @@
 ### Don't forget to learn and write and some tips
 ###### do when u just think of it
 ###### work out a plan B
-###### daily reflect self
+###### daily reflect self and keep contact with intimate ones
