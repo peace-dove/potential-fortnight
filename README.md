@@ -8,4 +8,4 @@
 ###### do when u just think of it
 ###### work out a plan B
 ###### daily reflect self and keep contact with intimate ones
-###### hope for holiday!
+###### hope for holiday! just enjoy it
