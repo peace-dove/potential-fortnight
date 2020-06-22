@@ -1,0 +1,25 @@
+//use punch method to solve Pell series
+//define the series as a[n]=a[n-1]+a[n-2]
+//output a[k]mod(32767)
+#include <iostream>
+
+using namespace std;
+const int M=10000010;
+int pell[M];//build a map to save time
+int main()
+{
+    int n;
+    int k;
+    pell[1]=1;
+    pell[2]=2;
+    for(int i=3; i<M; i++)
+        pell[i]=(2*pell[i-1]+pell[i-2])%32767;
+
+    cin>>n;
+    for(int i=1; i<=n; i++)
+    {
+        cin>>k;
+        cout<<pell[k]<<endl;
+    }
+    return 0;
+}
