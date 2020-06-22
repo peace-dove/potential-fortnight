@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int dx[4]={-1,0,1,0},dy[4]={0,1,0,-1};
+const int N=1010;
+char g[N][N];
+int d[N][N],n,m;
+typedef pair<int,int> PII;
+queue<PII>q;  //BFS使用的队列
+
+
+void Build(int n,int m){
+    memset(d,-1,sizeof(d));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++){
+            char c = getchar();
+            while (c!='0' && c!='1'){
+                c = getchar();
+            }
+            if(c=='1'){
+                d[i][j]=0;
+                q.push(make_pair(i,j));
+            }
+        }
+}
+
+void Print(int n,int m){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++) cout<<d[i][j]<<' ';
+        cout<<endl;
+    }
+}
+
+int check(int a,int b)
+{
+    return(a>=0&&a<n&&b>=0&&b<m&&d[a][b]==-1);
+}
+
+void bfs(){
+    while(q.size()){
+        PII t=q.front();
+        q.pop();
+        int x=t.first,y=t.second;
+        for(int i=0;i<4;i++){
+            int a=x+dx[i],b=y+dy[i];
+            if(check(a,b)){
+                d[a][b]=d[x][y]+1;
+                q.push(make_pair(a,b));
+            }
+        }
+    }
+}
+
+int main(){
+    cin>>n>>m;
+    Build(n,m);
+    bfs();
+    Print(n,m);
+    return 0;
+}
