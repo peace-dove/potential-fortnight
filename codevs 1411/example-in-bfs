@@ -1,3 +1,5 @@
+//the map has many ones which refer to sources
+//bfs with many sources
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -6,8 +8,7 @@ const int N=1010;
 char g[N][N];
 int d[N][N],n,m;
 typedef pair<int,int> PII;
-queue<PII>q;  //BFS使用的队列
-
+queue<PII>q;
 
 void Build(int n,int m){
     memset(d,-1,sizeof(d));
