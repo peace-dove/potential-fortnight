@@ -10,3 +10,4 @@
 ###### daily reflect self and keep contact with intimate ones
 ###### hope for holiday! just enjoy it
 ###### plz learn how to work and how to learn
+### suddenly be interested in installation of computer
