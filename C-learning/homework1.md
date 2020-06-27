@@ -225,4 +225,82 @@
        return 0;
    }
    ```
+   
+9. ```c
+   //(1)
+   #include <stdio.h>
+   #include <stdlib.h>
+   int fac(int n)
+   {
+       if(n==1||n==0)
+           return 1;
+       return n*fac(n-1);
+   }
+   int main( )
+   {
+       int m;
+       float k;
+       printf("input m:");
+       scanf("%d",&m);
+       k=fac(m);
+       printf("result=%f",k);
+       return 0;
+   }
+   //(2)
+   #include <stdio.h>
+   #include <stdlib.h>
+   void fac(int n,float *p1)
+   {
+       if(!n)
+       {
+           *p1=1;
+           return;
+       }
+       int f=1;
+       for(int i=1; i<=n; i++)
+           f*=i;
+       *p1=f;
+       return;
+   }
+   int main( )
+   {
+       int m;
+       float k,*p;
+       p=&k;
+       printf("input m:");
+       scanf("%d",&m);
+       fac(m,p);
+       printf("result=%f",k);
+       return 0;
+   }
+   ```
+
+10. ```C
+    #include <stdio.h>
+    #include <stdlib.h>
+    char *strcat(char *first,char *next)
+    {
+        char *temp=first;
+        while(*temp!='\0')
+            temp++;
+        *temp=*next;
+        while(*next!='\0')
+            *(temp++)=*(next++);
+        return first;
+    }
+    int main()
+    {
+        char str1[30] = "I learn ", *str2 = "C language.";
+        //char str1[100],str2[100];
+        //gets(str1);
+        //gets(str2);
+        //getchar();
+        //scanf("%[^\n],%[^\n]",str1,str2);
+        //printf("%s %s",str1,str2);
+        char *s;
+        s = strcat(str1,str2);
+        printf("%s\n",s);
+        return 0;
+    }
+    ```
 
