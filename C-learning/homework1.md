@@ -303,4 +303,99 @@
         return 0;
     }
     ```
+    
+11. ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    int fac(int n)
+    {
+        if(!n)
+            return 1;
+        return n*fac(n-1);
+    }
+    int uniquePaths(int m,int n)
+    {
+        return fac(m+n-2)/fac(m-1)/fac(n-1);
+    }
+    int main()
+    {
+        int m,n;
+        scanf("%d %d",&m,&n);
+        int k=uniquePaths(m,n);
+    	printf("共有%d条路径",k);
+        return 0;
+    }
+    ```
+
+12. ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    int a[100][100];
+    int m,n;
+    int uniquePaths(int row, int col)
+    {
+        if(a[row][col]==1)
+            return 0;
+        if(row==m-1&&col==n-1)
+            return 1;
+        if(row==m-1)
+            return uniquePaths(row,col+1);
+        if(col==n-1)
+            return uniquePaths(row+1,col);
+        return uniquePaths(row+1,col)+uniquePaths(row,col+1);
+    }
+    int main()
+    {
+    
+        scanf("%d %d",&m,&n);
+        for(int i=0; i<m; i++)
+            for(int j=0; j<n; j++)
+                scanf("%d",&a[i][j]);
+        int k=uniquePaths(0,0);
+        printf("共有%d条路径",k);
+        return 0;
+    }
+    ```
+
+13. ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    int a[20][20]= {0};
+    void rotate(int matrixRowSize, int matrixColSize)
+    {
+        for(int i=0; i<matrixRowSize; i++)
+            for(int j=i+1; j<matrixColSize; j++)
+            {
+                int temp=a[i][j];
+                a[i][j]=a[j][i];
+                a[j][i]=temp;
+            }
+        for(int i=0; i<matrixRowSize; i++)
+            for(int j=0; j<matrixColSize/2; j++)
+            {
+                int temp=a[i][j];
+                a[i][j]=a[i][matrixColSize-j-1];
+                a[i][matrixColSize-j-1]=temp;
+            }
+    
+    }
+    int main()
+    {
+        int n;
+        scanf("%d",&n);
+        for(int i=0; i<n; i++)
+            for(int j=0; j<n; j++)
+                scanf("%d",&a[i][j]);
+        rotate(n,n);
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+                printf("%d ",a[i][j]);
+            printf("\n");
+        }
+        return 0;
+    }
+    ```
+
+14. 
 
