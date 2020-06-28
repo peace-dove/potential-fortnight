@@ -397,5 +397,39 @@
     }
     ```
 
-14. 
+14. ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    int* spiralOrder(int (*matrix)[3], int matrixRowSize, int matrixColSize)
+    {
+        int *m=(int*)malloc(sizeof(int));
+        int cnt=0;
+        for(int layer=0; (layer<(matrixRowSize/2+1))&&(layer<(matrixColSize/2+1)); layer++)
+        {
+            for(int j=layer; j<=matrixColSize-layer-1; j++)
+                m[cnt++]=matrix[layer][j];
+            for(int i=layer+1; i<=matrixRowSize-layer-1; i++)
+                m[cnt++]=matrix[i][matrixColSize-layer-1];
+            for(int j=matrixColSize-layer-2; j>=layer; j--)
+                m[cnt++]=matrix[matrixRowSize-layer-1][j];
+            for(int i=matrixRowSize-layer-2; i>layer; i--)
+                m[cnt++]=matrix[i][layer];
+        }
+        return m;
+    }
+    int main()
+    {
+        int a[3][3]= {{1,2,3},{4,5,6},{7,8,9}};
+        int matrixRowSize=3,matrixColSize=3;
+        int *returnnum=spiralOrder(a, matrixRowSize, matrixColSize);
+        int *p;
+        for(p=returnnum; p<returnnum+9; p++)
+        {
+            printf("%4d",*p);
+        }
+        return 0;
+    }
+    ```
+
+    
 
