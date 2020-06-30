@@ -1,5 +1,11 @@
 1. ```c
-   //利用数组储存输入 利用气泡法排序
+   //输入
+   //1 2 3 4 5
+   //3 5 4 1 2
+   //输出
+   //5 4 3 2 1
+   //5 4 3 2 1
+   //利用数组储存输入 利用起泡法排序
    #include <stdio.h>
    #include <stdlib.h>
    int a[5]= {0};
@@ -21,9 +27,16 @@
        }
        return 0;
    }
-```
-   
+   ```
 2. ```c
+   //例如：输入
+   //1 2 3
+   //4 5 6
+   //7 8 9
+   //输出
+   //1 4 7
+   //2 5 8
+   //3 6 9
    #include <stdio.h>
    #include <stdlib.h>
    int a[10][10]= {0}; //假设最大为10*10 可以修改为更大
@@ -50,7 +63,6 @@
        return 0;
    }
    ```
-
 3. ```c
    #include <stdio.h>
    #include <stdlib.h>
@@ -84,6 +96,8 @@
    ```
 
 4. ```c
+   //例如 输入 1 3 5 4 2
+   //输出 1 3 2 4 5
    #include <stdio.h>
    #include <stdlib.h>
    int a[10]= {0};
@@ -119,10 +133,12 @@
                printf(" ");
        }
        return 0;
-   }
+}
    ```
-
+   
 5. ```c
+   //输入 1 2 3 4 11 12 13
+   //输出 13 12 11 4 3 2 1
    #include <stdio.h>
    #include <stdlib.h>
    #define N 7
@@ -152,10 +168,12 @@
                printf(" ");
        }
        return 0;
-   }
+}
    ```
-
+   
 6. ```c
+   //输入 1 2 3 4 11 12 13
+   //输出 13 12 11 4 3 2 1
    #include <stdio.h>
    #include <stdlib.h>
    #define N 7
@@ -181,9 +199,9 @@
                printf(" ");
        }
        return 0;
-   }
+}
    ```
-
+   
 7. ```c
    #include <stdio.h>
    #include <stdlib.h>
@@ -228,6 +246,10 @@
    ```
    
 9. ```c
+   //例如 输入 4
+   //输出 24
+   //输入 5
+   //输出 120
    //(1)fac有返回值 利用递归求得阶乘值
    #include <stdio.h>
    #include <stdlib.h>
@@ -271,12 +293,14 @@
        printf("input m:");
        scanf("%d",&m);
        fac(m,p);
-       printf("result=%f",k);
+    printf("result=%f",k);
        return 0;
    }
    ```
-
+   
 10. ```C
+    //输出
+    //I learn C language.
     #include <stdio.h>
     #include <stdlib.h>
     char *strcat(char *first,char *next)
@@ -306,6 +330,8 @@
     ```
     
 11. ```c
+    //输入 3 2
+    //输出 3
     #include <stdio.h>
     #include <stdlib.h>
     int fac(int n)
@@ -325,10 +351,16 @@
         int k=uniquePaths(m,n);
     	printf("共有%d条路径",k);
         return 0;
-    }
+}
     ```
-
+    
 12. ```c
+    //例如 输入
+    //0 0 0
+    //0 1 0
+    //0 0 0
+    //输出
+    //2
     #include <stdio.h>
     #include <stdlib.h>
     int a[100][100];
@@ -351,14 +383,23 @@
         scanf("%d %d",&m,&n);
         for(int i=0; i<m; i++)
             for(int j=0; j<n; j++)
-                scanf("%d",&a[i][j]);
+            scanf("%d",&a[i][j]);
         int k=uniquePaths(0,0);
         printf("共有%d条路径",k);
         return 0;
     }
     ```
-
+    
 13. ```c
+    //输入
+    //3
+    //1 2 3
+    //4 5 6
+    //7 8 9
+    //输出
+    //7 4 1
+    //8 5 2
+    //9 6 3
     #include <stdio.h>
     #include <stdlib.h>
     int a[20][20]= {0};
@@ -388,7 +429,7 @@
             for(int j=0; j<n; j++)
                 scanf("%d",&a[i][j]);
         rotate(n,n);
-        for(int i=0; i<n; i++)
+    for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
                 printf("%d ",a[i][j]);
@@ -397,8 +438,9 @@
         return 0;
     }
     ```
-
+    
 14. ```c
+    //输出 1 2 3 6 9 8 7 4 5
     #include <stdio.h>
     #include <stdlib.h>
     int* spiralOrder(int (*matrix)[3], int matrixRowSize, int matrixColSize)
@@ -431,7 +473,5 @@
         }
         return 0;
     }
-```
-    
-    
+    ```
 
