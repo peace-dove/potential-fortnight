@@ -190,3 +190,152 @@
        return 0;
    }
    ```
+
+> word作业
+
+1. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   
+   int main()
+   {
+       char a[100];
+       gets(a);
+       char *p=a;
+       while(*p)
+       {
+           printf("%c",*p);
+           p++;
+       }
+       printf("\n");
+       return 0;
+   }
+   ```
+
+2. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char a[50]="I am student";
+   int main()
+   {
+       char b[50];
+       gets(b);
+       char *p,*q;
+       p=a,q=b;
+       while(*q)
+       {
+           *(p++)=*(q++);
+       }
+       *p='\0';
+       char *t=a;
+       while(*t)
+       {
+           printf("%c",*t);
+           t++;
+       }
+       printf("\n");
+       //puts(a);
+       //puts(b);
+       return 0;
+   }
+   ```
+
+3. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char *strcat(char *first,char *next)
+   {
+       char *temp=first;
+       while(*temp!='\0')
+           temp++;		//指向first的最后一位
+       *temp=*next;
+       while(*next!='\0')
+           *(temp++)=*(next++);//将next连接在first后面
+       return first;
+   }
+   int main()
+   {
+       char str1[30] = "I love ", *str2 = "China!";
+       //char str1[100],str2[100];			//手动输入两串字符串进行连接
+       //gets(str1);
+       //gets(str2);
+       //getchar();
+       //scanf("%[^\n],%[^\n]",str1,str2);	//使用格式化输入
+       //printf("%s %s",str1,str2);
+       char *s;
+       s = strcat(str1,str2);
+       printf("%s\n",s);
+       return 0;
+   }
+   ```
+
+4. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char a[50];
+   int main()
+   {
+       gets(a);
+       char *p=a;
+       while(*p)
+       {
+           p++;
+       }
+       p--;
+       for(; p>=a; p--)
+           printf("%c",*p);
+       printf("\n");
+       return 0;
+   }
+   ```
+
+5. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char a[50];
+   int num[50]= {0};
+   int cnt=0,m=0;
+   int main()
+   {
+       gets(a);
+       char *p=a;
+       while(*p)
+       {
+           if(*p>='0'&&*p<='9')
+           {
+               cnt++;
+               num[m++]=*p-48;
+           }
+           p++;
+       }
+       printf("%d numbers\n",cnt);
+       for(int i=0; i<m; i++)
+           printf("%d",num[i]);
+       return 0;
+   }
+   ```
+
+6. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char a[50];
+   char res[50];
+   int m=0,cnt=0;
+   int main()
+   {
+       gets(a);
+       char *p=a;
+       while(*p)
+       {
+           if((*p>='A'&&*p<='Z')||(*p>='a'&&*p<='z'))
+               cnt++;
+           else
+               res[m++]=*p;
+           p++;
+       }
+       printf("%d numbers\n",cnt);
+       for(int i=0; i<m; i++)
+           printf("%c",res[i]);
+       return 0;
+   }
+   ```
