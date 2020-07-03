@@ -339,3 +339,92 @@
        return 0;
    }
    ```
+   
+7. ```c
+   //(1)使用静态数组
+   #include <stdio.h>
+   #include <stdlib.h>
+   char tmp[20];
+   int replace(char *p)
+   {
+       int cnt=0,m=0;
+   
+       while(*p)
+       {
+           if(*p=='t'||*p=='T')
+           {
+               tmp[m++]=*p-15;
+               cnt++;
+           }
+           else
+               tmp[m++]=*p;
+           p++;
+       }
+       return cnt;
+   }
+   int main()
+   {
+       char str[20];
+       gets(str);
+       char *p=str;
+       int res=replace(p);
+       printf("%d\n",res);
+       printf("%s",tmp);
+       return 0;
+   }
+   //(2)使用指针传递参数
+   #include <stdio.h>
+   #include <stdlib.h>
+   int replace(char *p)
+   {
+       int cnt=0;
+       while(*p)
+       {
+           if(*p=='t'||*p=='T')
+           {
+               *p-=15;
+               cnt++;
+           }
+           p++;
+       }
+       return cnt;
+   }
+   int main()
+   {
+       char str[20];
+       gets(str);
+       char *p=str;
+       int res=replace(p);
+       printf("%d\n",res);
+       printf("%s",str);
+       return 0;
+   }
+   ```
+
+8. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   char week[8][10]= {" ",
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday"
+                     };
+   int main()
+   {
+       int w;
+       scanf("%d",&w);
+       if(!(w>=1&&w<=7))
+       {
+           printf("Input Error!");
+           return 0;
+       }
+       printf("%s",week[w]);
+       return 0;
+   }
+   ```
+
+   
