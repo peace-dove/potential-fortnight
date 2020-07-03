@@ -427,4 +427,43 @@
    }
    ```
 
-   
+9. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   #include <string.h>
+   struct
+   {
+       char str[10];
+       int len;
+   } s[5],tmp;
+   int main()
+   {
+       char a[5];
+       int m=0;
+       for(int i=0; i<5; i++)
+       {
+           gets(s[i].str);
+           s[i].len=strlen(s[i].str);
+       }
+       for(int i=0; i<5; i++)
+           for(int j=i+1; j<5; j++)
+               if(s[i].len>s[j].len)
+               {
+                   tmp=s[i];
+                   s[i]=s[j];
+                   s[j]=tmp;
+               }
+       for(int i=0; i<5; i++)
+       {
+           if(s[i].len<3)
+               a[m++]=' ';
+           else
+               a[m++]=s[i].str[2];
+       }
+       a[m]='\0';
+       printf("%s",a);
+       return 0;
+   }
+   ```
+
+10. 
