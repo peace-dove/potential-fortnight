@@ -426,8 +426,8 @@
        printf("%s",week[w]);
        return 0;
    }
-```
-   
+   ```
+
 9. ```c
    #include <stdio.h>
    #include <stdlib.h>
@@ -467,6 +467,7 @@
    }
    ```
 
+
 10. ```c
     #include <stdio.h>
     #include <malloc.h>
@@ -503,3 +504,4 @@
         return 0;
     }
     ```
+
