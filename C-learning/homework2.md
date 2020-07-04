@@ -3,7 +3,7 @@
 1. ```c
    #include <stdio.h>
    #include <stdlib.h>
-   
+   //利用递推计算数列的值
    int fib(int n)
    {
        if(n==1||n==2)
@@ -21,7 +21,7 @@
    ```
 
 2. ```c
-   //(1)
+   //(1)已知数组大小 输入再依次求和
    #include <stdio.h>
    #include <stdlib.h>
    int a[100][100]= {0};
@@ -78,12 +78,12 @@
        p=a;
        while(*p)
        {
-           if(*p!=' '&&flag==0)
+           if(*p!=' '&&flag==0)//如果不是空格并且不处在一个单词中 计数加一
            {
                cnt++;
                flag=1;
            }
-           if(*p==' '&&flag==1)
+           if(*p==' '&&flag==1)//如果一个单词结束遇到空格 标记归零
            {
                flag=0;
            }
@@ -100,7 +100,7 @@
    #include <stdlib.h>
    #include <math.h>
    char a[100];
-   int num(char m)
+   int num(char m)//十六进制转十进制的对应变换
    {
        if(m=='0')
            return 0;
@@ -144,11 +144,11 @@
        p=s;
        while(*p)
            p++;
-       p--;
+       p--;//指针指向最后一位
        int k=0;
        for(; p>=s; p--)
        {
-           sum+=num(*p)*pow(16,k);
+           sum+=num(*p)*pow(16,k);//使用转换式子换得十进制数字
            k++;
        }
        return sum;
@@ -156,7 +156,7 @@
    int main()
    {
        gets(a);
-       int int_10=tran(a);
+       int int_10=tran(a);//十进制数字的值
        printf("%d",int_10);
        return 0;
    }
@@ -202,7 +202,7 @@
        char a[100];
        gets(a);
        char *p=a;
-       while(*p)
+       while(*p)//使用指针顺序输出字符串
        {
            printf("%c",*p);
            p++;
@@ -222,7 +222,7 @@
        gets(b);
        char *p,*q;
        p=a,q=b;
-       while(*q)
+       while(*q)//使用两个指针将q复制给p
        {
            *(p++)=*(q++);
        }
@@ -281,7 +281,7 @@
        {
            p++;
        }
-       p--;
+       p--;//先用指针移动到输入字串的最后一位 再逆向输出
        for(; p>=a; p--)
            printf("%c",*p);
        printf("\n");
@@ -304,7 +304,7 @@
            if(*p>='0'&&*p<='9')
            {
                cnt++;
-               num[m++]=*p-48;
+               num[m++]=*p-48;//将数字放入准备的数组中 注意数据类型转成数字
            }
            p++;
        }
@@ -330,7 +330,7 @@
            if((*p>='A'&&*p<='Z')||(*p>='a'&&*p<='z'))
                cnt++;
            else
-               res[m++]=*p;
+               res[m++]=*p;//将不属于字母的内容放入余串数组
            p++;
        }
        printf("%d numbers\n",cnt);
@@ -402,6 +402,7 @@
    ```
 
 8. ```c
+   //一一对应输出对应星期
    #include <stdio.h>
    #include <stdlib.h>
    char week[8][10]= {" ",
@@ -425,8 +426,8 @@
        printf("%s",week[w]);
        return 0;
    }
-   ```
-
+```
+   
 9. ```c
    #include <stdio.h>
    #include <stdlib.h>
@@ -435,7 +436,7 @@
    {
        char str[10];
        int len;
-   } s[5],tmp;
+   } s[5],tmp;//使用结构体储存输入字符和字符长度
    int main()
    {
        char a[5];
@@ -469,9 +470,8 @@
 10. ```c
     #include <stdio.h>
     #include <malloc.h>
-    void swap(int *a,int n)
+    void swap(int *a,int n)//利用冒泡法和指针便利整个数组调整顺序
     {
-    
         for(int i=0; i<n; i++)
             for(int j=i+1; j<n; j++)
                 if(a[i]>a[j])
@@ -492,7 +492,7 @@
     
         for(i=0; i<n; i++)
         {
-            a[i]=rand();
+            a[i]=rand();//赋值任意值给动态数组
         }
         swap(a,n);
         for(i=0; i<n; i++)
