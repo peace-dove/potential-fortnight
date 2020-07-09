@@ -8,7 +8,7 @@
 
 目标方向：例如Android
 
-专业工具：Git  
+专业工具：Git Github
 
 通用工具：
 
