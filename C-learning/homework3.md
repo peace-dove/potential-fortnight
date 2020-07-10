@@ -271,12 +271,14 @@
        struct ListNode* tail=NULL;
        struct ListNode* p=l1;
        struct ListNode* q=l2;
-   
+   	//为防止内存泄漏 对申请空间进行检查
        while(p&&q)
        {
            if(p->Data<q->Data)
            {
-               struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode*));
+               struct ListNode* temp;
+               if(NULL==(temp= (struct ListNode*)malloc(sizeof(struct ListNode*))))
+                   exit(1);
                temp->Data =p->Data;
                temp->Next = NULL;
                if(head==NULL)
@@ -293,7 +295,9 @@
            }
            else
            {
-               struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode*));
+               struct ListNode* temp;
+               if(NULL==(temp= (struct ListNode*)malloc(sizeof(struct ListNode*))))
+                   exit(1);
                temp->Data =q->Data;
                temp->Next = NULL;
                if(head==NULL)
@@ -312,9 +316,132 @@
        if(p==NULL)
            tail->Next=q;
        if(q==NULL)
-           tail->Next=p;
+        tail->Next=p;
        return head;
    }
    ```
+   
+8. ```c
+   //使用了写到的Reserve函数和addtwonumber函数
+   //具体操作在主函数中体现
+   typedef int ElementType;
+   typedef struct ListNode *PtrToNode;
+   struct ListNode
+   {
+       ElementType Data;
+       PtrToNode   Next;
+   };
+   typedef PtrToNode List;
+   
+   struct ListNode *createlist()
+   {
+       //尾插法
+       List head=NULL, tail=NULL;
+       int t;
+       scanf("%d",&t);
+       while(t != -1)
+       {
+           List temp = (List)malloc(sizeof(List));
+           temp->Data = t;
+           temp->Next = NULL;
+           if(tail==NULL)
+               head = tail = temp;
+           else
+           {
+               tail->Next = temp;
+               tail = temp;
+           }
+           scanf("%d",&t);
+       }
+       return head;
+   }
+   
+   void printlist( struct ListNode *head )
+   {
+       List p = head;
+       while (p)
+       {
+           printf("%d ", p->Data);
+           p = p->Next;
+       }
+       printf("\n");
+   }
+   
+   
+   struct ListNode *Reserve(struct ListNode * L )
+   {
+       List tail;
+       tail=L;
+       while(tail&&tail->Next)
+           tail=tail->Next;
+       List s,p;
+       s=L;
+       p=s->Next;
+       while(s&&p&&s!=tail)
+       {
+           s->Next=tail->Next;
+           tail->Next=s;
+           s=p;
+           p=s->Next;
+       }
+       return tail;
+   }
+   struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
+   {
+       struct ListNode *p=l1;
+       int num1=0,m=0;
+       while(p)
+       {
+           num1+=p->Data*pow(10,m);
+           m++;
+           p=p->Next;
+       }
+   
+       struct ListNode *q=l2;
+       int num2=0,n=0;
+       while(q)
+       {
+           num2+=q->Data*pow(10,n);
+           n++;
+           q=q->Next;
+       }
+       int num=num1+num2;
+       printf("%d %d\n",num1,num2);
+   
+       List head=NULL, tail=NULL;
+       while(num)
+       {
+           int t=num%10;
+           num/=10;
+           List temp = (List)malloc(sizeof(List));
+           temp->Data = t;
+           temp->Next = NULL;
+           if(tail==NULL)
+               head = tail = temp;
+           else
+           {
+               tail->Next = temp;
+               tail = temp;
+           }
+       }
+   
+       return head;
+   }
+   
+   int main()
+   {
+       struct ListNode *head1;
+       struct ListNode *head2;
+       struct ListNode *res;
+       head1= createlist();
+       head2= createlist();
+       head1=Reserve(head1);
+       head2=Reserve(head2);
+       res=addTwoNumbers(head1,head2);
+       res=Reserve(res);
+       printlist(res);
+       return 0;
+   }
+   ```
 
-8. 
+9. 
