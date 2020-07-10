@@ -157,4 +157,109 @@
    }
    ```
 
-4. 
+4. ```c
+   //使用两个指针分别作为奇链表和偶链表的尾部 再用一个单独头结点的进行连接
+   struct ListNode* oddEvenList(struct ListNode* head)
+   {
+       if(head==NULL || head->Next==NULL)
+           return head;
+   
+       struct ListNode *p,*q,*head2;
+       p=head;
+       q=p->Next;
+       head2=head->Next;
+       int m=3;
+       while(p->Next!=NULL && q->Next!=NULL)
+       {
+           p->Next=q->Next;
+           p=p->Next;
+           q->Next=p->Next;
+           q=q->Next;
+       }
+       p->Next=head2;
+       return head;
+   }
+   ```
+
+5. ```c
+   //对这个链表遍历
+   //单独设立两个链表用于存放小于分解值和大于分解值的数
+   struct ListNode* partition(struct ListNode* head, int x)
+   {
+       struct ListNode* bs=NULL;//之前的开始
+       struct ListNode* be=NULL;//之前的结尾
+       struct ListNode* as=NULL;//之后的开始
+       struct ListNode* ae=NULL;//之后的结尾
+       while(head!=NULL)
+       {
+           struct ListNode* tmp=head->Next;
+           head->Next=NULL;
+           if(head->Data<x)
+           {
+               if(bs==NULL)
+               {
+                   bs=head;
+                   be=bs;
+               }
+               else
+               {
+                   be->Next=head;
+                   be=be->Next;
+               }
+           }
+           else
+           {
+               if(as==NULL)
+               {
+                   as=head;
+                   ae=as;
+               }
+               else
+               {
+                   ae->Next=head;
+                   ae=ae->Next;
+               }
+           }
+           head=tmp;
+       }
+       if(bs==NULL)
+           return as;
+       be->Next=as;
+       return bs;
+   }
+   ```
+
+6. ```c
+   struct ListNode *removezero(struct ListNode *head)
+   {
+       struct ListNode *start;
+       start->Next=head;
+       struct ListNode * h=start;
+       while (h->Next!=NULL)
+       {
+           struct ListNode *h1=h->Next;
+           struct ListNode *h2=h1;
+   
+           int sum=h1->Data;
+   
+           while (h2->Next!=NULL||sum==0)
+           {
+               if(sum==0)
+               {
+                   h->Next=h2->Next;
+                   break;
+               }
+               h2=h2->Next;
+   
+               sum+=h2->Data;
+           }
+           if(sum!=0)
+           {
+               h=h->Next;
+           }
+       }
+       return start->Next;
+   }
+   ```
+
+7. 
