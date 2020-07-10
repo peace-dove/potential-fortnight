@@ -262,4 +262,59 @@
    }
    ```
 
-7. 
+7. ```c
+   //利用归并排序的思路
+   //两个链表一一比较 将其中较小的那一个放入一个新的链表 最后还有剩余的接在排序链表后面
+   struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
+   {
+       struct ListNode* head=NULL;
+       struct ListNode* tail=NULL;
+       struct ListNode* p=l1;
+       struct ListNode* q=l2;
+   
+       while(p&&q)
+       {
+           if(p->Data<q->Data)
+           {
+               struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode*));
+               temp->Data =p->Data;
+               temp->Next = NULL;
+               if(head==NULL)
+               {
+                   head=temp;
+                   tail=head;
+               }
+               else
+               {
+                   tail->Next=temp;
+                   tail=tail->Next;
+               }
+               p=p->Next;
+           }
+           else
+           {
+               struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode*));
+               temp->Data =q->Data;
+               temp->Next = NULL;
+               if(head==NULL)
+               {
+                   head=temp;
+                   tail=head;
+               }
+               else
+               {
+                   tail->Next=temp;
+                   tail=tail->Next;
+               }
+               q=q->Next;
+           }
+       }
+       if(p==NULL)
+           tail->Next=q;
+       if(q==NULL)
+           tail->Next=p;
+       return head;
+   }
+   ```
+
+8. 
