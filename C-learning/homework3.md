@@ -1,3 +1,64 @@
+注：为了便捷，每一题基本上只放上书写的函数，在调试过程中使用到了一些自己写的操作函数，还有自己的宏定义，如下。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>//bool型使用到的头文件
+
+typedef int ElementType;
+typedef struct ListNode *PtrToNode;
+struct ListNode
+{
+    ElementType Data;
+    PtrToNode   Next;
+};//结构体定义
+typedef PtrToNode List;//为简洁使用了List
+
+struct ListNode *createlist()//创建链表函数 以-1作为终止符号 可调整为其他
+{
+    List head=NULL, tail=NULL;
+    int t;
+    scanf("%d",&t);
+    while(t != -1)
+    {
+        List temp = (List)malloc(sizeof(List));
+        temp->Data = t;
+        temp->Next = NULL;
+        if(tail==NULL)
+            head = tail = temp;
+        else
+        {
+            tail->Next = temp;
+            tail = temp;
+        }
+        scanf("%d",&t);
+    }
+    return head;
+}
+
+void printlist( struct ListNode *head )//输出链表
+{
+    List p = head;
+    while (p)
+    {
+        printf("%d ", p->Data);
+        p = p->Next;
+    }
+    printf("\n");
+}
+int main()
+{
+    struct ListNode *head;
+    struct ListNode *res;
+    //操作函数 根据需求书写补充
+    return 0;
+}
+```
+
+
+
 1. ```c
    //使用tail指针指向最后一位 利用tail的指向储存需要逆转的s的指向
    //当s移动到tail时表明整个链表逆序已完成 返回输出尾指针
@@ -444,4 +505,66 @@
    }
    ```
 
-9. 
+9. ```c
+   struct ListNode* deleteDuplicates(struct ListNode* head)
+   {
+       struct ListNode* start;//虚拟设置一个头结点
+       struct ListNode* h,*h1;
+       start = (List)malloc(sizeof(List));
+       start->Next=head;
+   
+       h=start;
+       h1=head;
+   
+       int cnt=0;//统计当前数是否是重复的
+       while(h1&&h1->Next)
+       {
+           if(h1->Data==h1->Next->Data)
+           {
+               cnt++;
+               h1->Next=h1->Next->Next;
+           }
+           else
+           {
+               if(cnt>0)
+               {
+                   h->Next=h1->Next;
+                   cnt=0;
+               }
+               else
+               {
+                   h=h1;
+               }
+               h1=h1->Next;
+           }
+       }
+       if(cnt==1)
+       {
+           h->Next=h1->Next;
+       }
+       return start->Next;
+   }
+   ```
+
+10. ```c
+    //使用两个指针前后对比数据 出现不一致则返回假
+    //全部匹配则返回真
+    bool isPalindrome(struct ListNode* head)
+    {
+        struct ListNode *start,*tail;
+        start=tail=head;
+        while(tail->Next)
+            tail=tail->Next;
+        while(start->Next&&start!=tail&&start->Next!=tail)
+        {
+            if(start->Data!=tail->Data)
+                return false;
+            struct ListNode *p=head;
+            while(p->Next!=tail)
+                p=p->Next;
+            tail=p;
+            start=start->Next;
+        }
+        return true;
+    }
+    ```
