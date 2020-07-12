@@ -14,7 +14,7 @@ struct ListNode
     ElementType Data;
     PtrToNode   Next;
 };//结构体定义
-typedef PtrToNode List;//为简洁使用了List
+typedef PtrToNode List;//为简洁使用了List作为ADT
 
 struct ListNode *createlist()//创建链表函数 以-1作为终止符号 可调整为其他
 {
@@ -224,11 +224,10 @@ int main()
    {
        if(head==NULL || head->Next==NULL)
            return head;
-   
        struct ListNode *p,*q,*head2;
-       p=head;
-       q=p->Next;
-       head2=head->Next;
+       p=head;//奇数结点的尾结点
+       q=p->Next;//偶数结点的尾结点
+       head2=head->Next;//偶数结点的头结点
        int m=3;
        while(p->Next!=NULL && q->Next!=NULL)
        {
@@ -237,11 +236,11 @@ int main()
            q->Next=p->Next;
            q=q->Next;
        }
-       p->Next=head2;
+       p->Next=head2;//将两个链表连接
        return head;
    }
    ```
-
+   
 5. ```c
    //对这个链表遍历
    //单独设立两个链表用于存放小于分解值和大于分解值的数
@@ -257,7 +256,7 @@ int main()
            head->Next=NULL;
            if(head->Data<x)
            {
-               if(bs==NULL)
+               if(bs==NULL)//之前的第一位
                {
                    bs=head;
                    be=bs;
@@ -270,7 +269,7 @@ int main()
            }
            else
            {
-               if(as==NULL)
+               if(as==NULL)//之后的第一位
                {
                    as=head;
                    ae=as;
@@ -291,9 +290,13 @@ int main()
    ```
 
 6. ```c
+   //删除链表中连续项之和为0的部分
    struct ListNode *removezero(struct ListNode *head)
    {
-       struct ListNode *start;
+       struct ListNode *start;//开辟虚拟头结点并申请空间
+       start=(List)malloc(sizeof(List));
+       if(start==NULL)//若申请未成功则退出程序
+           exit(1);
        start->Next=head;
        struct ListNode * h=start;
        while (h->Next!=NULL)
@@ -305,7 +308,7 @@ int main()
    
            while (h2->Next!=NULL||sum==0)
            {
-               if(sum==0)
+               if(sum==0)//如果和为0 将h1和h2之间的结点删除掉
                {
                    h->Next=h2->Next;
                    break;
@@ -313,16 +316,16 @@ int main()
                h2=h2->Next;
    
                sum+=h2->Data;
-           }
+           }//这个h结点遍历完成之后没有发现和为0 h 向后推一位
            if(sum!=0)
            {
                h=h->Next;
            }
-       }
+    }
        return start->Next;
    }
    ```
-
+   
 7. ```c
    //利用归并排序的思路
    //两个链表一一比较 将其中较小的那一个放入一个新的链表 最后还有剩余的接在排序链表后面
@@ -551,6 +554,8 @@ int main()
     //全部匹配则返回真
     bool isPalindrome(struct ListNode* head)
     {
+        if(head==NULL||head->Next==NULL)
+            return true;
         struct ListNode *start,*tail;
         start=tail=head;
         while(tail->Next)
