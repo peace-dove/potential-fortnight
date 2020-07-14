@@ -17,3 +17,6 @@
 ### Rember to read whatever the book is
 ###### keep reading...
 ### To balance learning and what needs in working
+###### in the university what need to do most is learning professional skills and knowledge
+
+### Learn car driving. Fighting!
