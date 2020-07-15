@@ -226,6 +226,34 @@ number>>n;//如果number为非负， 则用number除以2的n次幂
 
 ### 位字段
 
+使用一个二进制位表示开关开闭 做01判别
+
+赋值不能超过对应字段的范围
+
+```c
+struct {
+unsigned int field1 : 1;
+unsigned int : 2;
+unsigned int field2 : 1;
+unsigned int : 0;
+unsigned int field3 : 1;
+} stuff;
+//stuff.field3将会储存在下一个unsigned int中
+
+struct box_props {
+bool opaque : 1 ;
+unsigned int fill_color : 3 ;
+unsigned int : 4 ;
+bool show_border : 1 ;
+unsigned int border_color : 3 ;
+unsigned int border_style : 2 ;
+unsigned int : 2 ;
+};
+//该结构占16位
+```
+
+
+
 ### 位字段和按位运算
 
 使用联合可以看到 同一个储存空间储存相同的数据 通过不同的解读能够得到不一样的结论
