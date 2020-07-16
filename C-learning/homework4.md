@@ -351,4 +351,111 @@
    }
    ```
 
-4. 
+4. ```c++
+   //使用C++进行书写
+   #include <iostream>
+   #include <string.h>
+   #include <algorithm>
+   #include <stack>
+   using namespace std;
+   #define MAXSIZE 1000006
+   stack<int> A,B;//A is the left and B is the right
+   int num=0;//the number of left stack
+   int sum[MAXSIZE]= {0}; //Si
+   int maxsum[MAXSIZE]= {0}; //max of Si
+   int movetor()//number move to right
+   {
+       if(!A.empty())
+           B.push(A.top());
+       A.pop();
+       num--;
+       return 0;
+   }
+   int movetol()//number move to left
+   {
+       if(!B.empty())
+       {
+           if(num==0)//if A is empty
+           {
+               sum[num]=maxsum[num]=B.top();
+               A.push(B.top());
+               B.pop();
+           }
+           else
+           {
+               A.push(B.top());
+               sum[num]=sum[num-1]+B.top();
+               B.pop();
+               if(sum[num]>maxsum[num-1])
+                   maxsum[num]=sum[num];
+               else
+                   maxsum[num]=maxsum[num-1];
+           }
+           num++;
+       }
+       return 0;
+   }
+   int insert(int k)
+   {
+       A.push(k);
+       if(num==0)
+           sum[num]=maxsum[num]=k;
+       else
+       {
+           sum[num]=sum[num-1]+k;
+           if(sum[num]>maxsum[num-1])
+               maxsum[num]=sum[num];
+           else
+               maxsum[num]=maxsum[num-1];
+   
+       }
+       num++;
+       return 0;
+   }
+   void del()
+   {
+       if(!A.empty())
+       {
+           A.pop();
+           num--;
+       }
+   }
+   int main()
+   {
+       int k,n;
+       char str[5];
+       cin>>n;
+   
+       while(!A.empty())
+           A.pop();
+       while(!B.empty())
+           B.pop();
+       for(int i=0; i<n; i++)
+       {
+           cin>>str;
+           switch(str[0])
+           {
+           case 'I':
+               cin>>k;
+               insert(k);
+               break;
+           case 'L':
+               movetor();
+               break;
+           case 'R':
+               movetol();
+               break;
+           case 'D':
+               del();
+               break;
+           case 'Q':
+               cin>>k;
+               cout<<maxsum[k-1]<<'\n';
+               break;
+           }
+       }
+       return 0;
+   }
+   ```
+
+   
