@@ -231,6 +231,53 @@
    ```
 
 3. ```c
+   (1)
+   //使用C++的STL库完成
+   #include <bits/stdc++.h>
+   
+   using namespace std;
+   stack<int> s;//存放每一回合分数的栈
+   int main()
+   {
+       char input[10],ch;
+       int m=0;
+       while((ch=getchar())!='\n')
+       {
+           if(ch!=' ')
+               input[m++]=ch;//输入操作和分数
+       }
+       for(int i=0; i<m; i++)
+       {
+           if(input[i]>='0'&&input[i]<='9')
+               s.push(input[i]-'0');//数字表明这一回合分数
+           else if(input[i]=='+')
+           {
+               int top=s.top();
+               s.pop();//先弹出记录到第二个
+               int sum=top+s.top();
+               s.push(top);//再压栈压回去
+               s.push(sum);//这一回合得分压栈
+           }
+           else if(input[i]=='D')
+           {//前一回合分数的双倍
+               int sum=0;
+               sum=2*s.top();
+               s.push(sum);
+           }
+           else//否则删除前一回合记录
+               s.pop();
+       }
+       int sum=0;
+       while(!s.empty())
+       {//所有的弹出并计算总分
+           sum+=s.top();
+           s.pop();
+       }
+       printf("The score is %d.\n",sum);//输出
+       return 0;
+   }
+   (2)
+   //使用C语言编写了栈的函数来处理
    #include <stdio.h>
    #include <stdlib.h>
    #include <time.h>
@@ -303,7 +350,7 @@
        char input[10],ch;
        int m=0;
        while((ch=getchar())!='\n')
-       {
+    {
            if(ch!=' ')
                input[m++]=ch;
        }
@@ -350,7 +397,7 @@
        return 0;
    }
    ```
-
+   
 4. ```c++
    //使用C++进行书写
    #include <iostream>
