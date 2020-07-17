@@ -175,7 +175,7 @@
    
    }
    
-   //将x入栈
+   //将x入栈函数
    int  push( sqstack *S, ElemType x )
    {
        if (S->top == S->stacksize)
@@ -207,7 +207,7 @@
    //弹出队列中元素
    //将s1中的元素全部放入s2中 从s2中pop则是队列的先进先出顺序
    //可以pop后再放回s1
-   //可以检验下s2中是否还有元素 有就直接pop s2 没有元素再将现在s1中所有元素放入s2
+   //或者可以检验下s2中是否还有元素 有就直接pop s2 没有元素再将现在s1中所有元素放入s2
    int qpop(queen q,ElemType *e)
    {
        if(q.s1.stacksize==0||q.s2.stacksize==0)
@@ -241,15 +241,15 @@
    {
        char input[10],ch;
        int m=0;
-       while((ch=getchar())!='\n')
+       while((ch=getchar())!='\n')//输入回车表示输入结束
        {
            if(ch!=' ')
-               input[m++]=ch;//输入操作和分数
+               input[m++]=ch;//输入操作和分数列表
        }
        for(int i=0; i<m; i++)
-       {
+       {//也可以用switch书写
            if(input[i]>='0'&&input[i]<='9')
-               s.push(input[i]-'0');//数字表明这一回合分数
+               s.push(input[i]-'0');//数字表明这一回合分数 直接压栈
            else if(input[i]=='+')
            {
                int top=s.top();
@@ -269,7 +269,7 @@
        }
        int sum=0;
        while(!s.empty())
-       {//所有的弹出并计算总分
+       {//所有的元素弹出并计算总分
            sum+=s.top();
            s.pop();
        }
@@ -470,7 +470,7 @@
    int main()
    {
        int k,n;
-       char str[5];
+       char str[10];
        cin>>n;
    
        while(!A.empty())
@@ -495,7 +495,7 @@
            case 'D':
                del();
                break;
-           case 'Q':
+           case 'Q'://输出前k个和中最大的那一个
                cin>>k;
                cout<<maxsum[k-1]<<'\n';
                break;
