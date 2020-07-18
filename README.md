@@ -20,3 +20,4 @@
 ###### in the university what need to do most is learning professional skills and knowledge
 
 ### Learn car driving. Fighting!
+### Don't forget to learn English every day. 
