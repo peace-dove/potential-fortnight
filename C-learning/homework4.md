@@ -9,6 +9,7 @@
        int stacksize;//栈的大小
    } sqstack;
    //元素为栈的栈结构
+   //要利用到这个储存栈、开辟栈和储存栈
    typedef struct
    {
        int top;
@@ -26,7 +27,7 @@
        return 0;  /* 初始化成功 */
    
    }
-   
+   //关于栈的操作函数
    //将x入栈
    int  push( sqstack *S, ElemType x )
    {
@@ -146,8 +147,8 @@
            pushs(&A,&st);//st再放入A
        return A;
    }
-   ```
-
+```
+   
 2. ```c
    //使用栈的一些函数实现了队列的push和pop操作
    typedef int ElemType;
@@ -158,6 +159,9 @@
        int stacksize;//栈的大小
    } sqstack;
    //使用两个栈维护一个队列 内容存储在栈中
+   //第一个栈用于储存和逆序的排列
+   //第二个栈则是再逆序以获得顺序输出的效果
+   //有则直接输出 没有或者不够了则从第一个栈中间倒过来
    typedef struct
    {
        sqstack s1;
@@ -226,10 +230,10 @@
            }
            pop(&q.s2,e);
        }
-       return 0;
+    return 0;
    }
    ```
-
+   
 3. ```c
    (1)
    //使用C++的STL库完成
