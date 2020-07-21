@@ -147,93 +147,92 @@
            pushs(&A,&st);//st再放入A
        return A;
    }
-```
+   ```
    
 2. ```c
    //使用栈的一些函数实现了队列的push和pop操作
-   typedef int ElemType;
-   typedef struct
-   {
-       int top;//栈顶 元素个数
-       ElemType *base;//栈底
-       int stacksize;//栈的大小
-   } sqstack;
-   //使用两个栈维护一个队列 内容存储在栈中
-   //第一个栈用于储存和逆序的排列
-   //第二个栈则是再逆序以获得顺序输出的效果
-   //有则直接输出 没有或者不够了则从第一个栈中间倒过来
-   typedef struct
-   {
-       sqstack s1;
-       sqstack s2;
-   } queen;
-   
-   int initstack(sqstack S)
-   {
-       S.base=(ElemType *)malloc(SIZE*sizeof(ElemType));
-       if(!S.base)
-           return -1;  /* 初始化失败*/
-       S.top=0;          /*空栈标志*/
-       S.stacksize = SIZE;
-       return 0;  /* 初始化成功 */
-   
-   }
-   
-   //将x入栈函数
-   int  push( sqstack *S, ElemType x )
-   {
-       if (S->top == S->stacksize)
-       {
-           S->base=(ElemType *)realloc(S->base,(S->stacksize+1)*sizeof(ElemType));
-           if(!S->base)
-               return -1;
-           S->stacksize++;
-       }
-       S->base[S->top++] = x;
-       return 0 ;
-   }
-   //将x入队列 也即放入s1栈中
-   void qpush(queen q,ElemType x)
-   {
-       push(&q.s1,x);
-   }
-   //弹出栈顶的元素
-   int pop(sqstack *S, ElemType *e)
-   {
-       if (S->top==0)
-       {
-           printf("Stack is empty");
-           return -1;
-       }
-       *e=S->base [-- S->top ] ;
+      typedef int ElemType;
+      typedef struct
+      {
+          int top;//栈顶 元素个数
+          ElemType *base;//栈底
+          int stacksize;//栈的大小
+      } sqstack;
+      //使用两个栈维护一个队列 内容存储在栈中
+      //第一个栈用于储存和逆序的排列
+      //第二个栈则是再逆序以获得顺序输出的效果
+      //有则直接输出 没有或者不够了则从第一个栈中间倒过来
+      typedef struct
+      {
+          sqstack s1;
+          sqstack s2;
+      } queen;
+      
+      int initstack(sqstack S)
+      {
+          S.base=(ElemType *)malloc(SIZE*sizeof(ElemType));
+          if(!S.base)
+              return -1;  /* 初始化失败*/
+          S.top=0;          /*空栈标志*/
+          S.stacksize = SIZE;
+          return 0;  /* 初始化成功 */
+      
+      }
+      
+      //将x入栈函数
+      int  push( sqstack *S, ElemType x )
+      {
+          if (S->top == S->stacksize)
+          {
+              S->base=(ElemType *)realloc(S->base,(S->stacksize+1)*sizeof(ElemType));
+              if(!S->base)
+                  return -1;
+              S->stacksize++;
+          }
+          S->base[S->top++] = x;
+          return 0 ;
+      }
+      //将x入队列 也即放入s1栈中
+      void qpush(queen q,ElemType x)
+      {
+          push(&q.s1,x);
+      }
+      //弹出栈顶的元素
+      int pop(sqstack *S, ElemType *e)
+      {
+          if (S->top==0)
+          {
+              printf("Stack is empty");
+              return -1;
+          }
+          *e=S->base [-- S->top ] ;
+          return 0;
+      }
+      //弹出队列中元素
+      //将s1中的元素全部放入s2中 从s2中pop则是队列的先进先出顺序
+      //可以pop后再放回s1
+      //或者可以检验下s2中是否还有元素 有就直接pop s2 没有元素再将现在s1中所有元素放入s2
+      int qpop(queen q,ElemType *e)
+      {
+          if(q.s1.stacksize==0||q.s2.stacksize==0)
+          {
+              printf("The queen is empty!");
+              return -1;
+          }
+          if(q.s2.stacksize!=0)
+              pop(&q.s2,e);
+          else
+          {
+              while(q.s1.top!=0)
+              {
+                  pop(&q.s1,e);
+                  push(&q.s2,*e);
+              }
+              pop(&q.s2,e);
+          }
        return 0;
-   }
-   //弹出队列中元素
-   //将s1中的元素全部放入s2中 从s2中pop则是队列的先进先出顺序
-   //可以pop后再放回s1
-   //或者可以检验下s2中是否还有元素 有就直接pop s2 没有元素再将现在s1中所有元素放入s2
-   int qpop(queen q,ElemType *e)
-   {
-       if(q.s1.stacksize==0||q.s2.stacksize==0)
-       {
-           printf("The queen is empty!");
-           return -1;
-       }
-       if(q.s2.stacksize!=0)
-           pop(&q.s2,e);
-       else
-       {
-           while(q.s1.top!=0)
-           {
-               pop(&q.s1,e);
-               push(&q.s2,*e);
-           }
-           pop(&q.s2,e);
-       }
-    return 0;
-   }
+      }
    ```
-   
 3. ```c
    (1)
    //使用C++的STL库完成
