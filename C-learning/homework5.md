@@ -199,7 +199,7 @@
    }
    ```
    
-3. ```c
+3. ```c++
    #include<iostream>
    #include<cstring>
    #include<stdio.h>
@@ -209,34 +209,34 @@
        int m, total;
        while (cin >> m >> total)
        {
-           int arrival,check;
-           int sum = 0;
-           int q[20];
-           memset(q,0,sizeof(q));
+           int arrival,check;//到达时间和操作的时间
+           int sum = 0;//所有的等待时间
+           int q[21]= {0}; //每个窗口操作的时长
+           //memset(q,0,sizeof(q));
            for (int i = 0; i <total; i++)
            {
                cin >>arrival>>check;
-               int cur = 0;
-               int min = q[0];
+               int index = 0;
+               int mintime = q[0];
                for (int i = 0; i < m; i++)
                {
-                   if (q[i] <min)
+                   //找到操作时间最少的那个窗口
+                   if (q[i] <mintime)
                    {
-                       min = q[i];
-                       cur = i;
+                       mintime = q[i];
+                       index = i;
                    }
                }
-               if (arrival< q[cur])
+               if (arrival< q[index])
                {
-                   sum += (q[cur] -arrival);
-                   q[cur] +=check;
+                   //到达时间在所有窗口操作结束之前 需要等待
+                   sum += (q[index] -arrival);//操作结束时间减去到达时间为等待的时间
+                   q[index]+=check;//加上新的操作的时间
                }
                else
-               {
-                   q[cur]=arrival+check;
-               }
+                   q[index]=arrival+check;//有空闲窗口 该窗口操作结束的时间为到达时间加上操作时间
            }
-           printf("%.2f\n", sum*1.0/total);
+           printf("%.2f\n", sum/total/1.0);//平均等待时间 保留两位小数
        }
        return 0;
    }
@@ -245,8 +245,6 @@
 4. ```c
    #include <stdio.h>
    #include <stdlib.h>
-   
-   #define SIZE  100
    
    #define maxlen 1000
    typedef int Datatype;
@@ -318,12 +316,12 @@
        qn=InitQueue(qn);
    
        for(int a=1;a<=m;a++)
-           Add(qm,a);
+           Add(qm,a);//使用序号一一压入队列
        for(int a=1;a<=n;a++)
            Add(qn,a);
    
        while(k--)
-       {
+       {//一一匹配后放入队尾 共匹配k项
            printf("%d %d\n",GetHead(qm),GetHead(qn));
            Add(qm,GetHead(qm));
            Add(qn,GetHead(qn));
@@ -333,12 +331,10 @@
        return 0;
    }
    ```
-
+   
 5. ```c
    #include <stdio.h>
    #include <stdlib.h>
-   
-   #define SIZE  100
    
    #define maxlen 1000
    typedef int Datatype;
@@ -399,11 +395,11 @@
            printf("queue empty");
    }
    int check(int num)
-   {
-       if(num%7==0)
+   {//检验数是否是7的倍数和含有数字7
+       if(num%7==0)//是7的倍数
            return 1;
        while(num)
-       {
+       {//用十进制展开后含有数字7
            int tmp=num%10;
            if(tmp==7)
                return 1;
@@ -417,22 +413,22 @@
        scanf("%d %d %d",&n,&m,&t);
        char name[20][20];
        for(int i=1; i<=n; i++)
-           scanf("%s",name[i]);
+           scanf("%s",name[i]);//用一个数组储存姓名
    
        q=(SeqQueue *)malloc(sizeof(SeqQueue));
        q=InitQueue(q);
    
        for(int i=1; i<=n; i++)
-           Add(q,i);
+           Add(q,i);//用数字代表人名
        for(int i=1; i<m; i++)
-       {
+       {//使第m人作为队首 之前的往队尾放
            Datatype tmp=GetHead(q);
            Add(q,tmp);
            Delete(q);
        }
        while(q->rear-q->front!=1)
        {
-           if(check(t))
+           if(check(t))//报数t
            {
                Delete(q);
            }
@@ -444,9 +440,9 @@
            }
            t++;
        }
-       printf("%s",name[GetHead(q)]);
+       printf("%s",name[GetHead(q)]);//转为姓名输出
        return 0;
    }
    ```
-
+   
    
