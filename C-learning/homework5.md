@@ -1,8 +1,6 @@
 1. ```c
    #include <stdio.h>
    #include <stdlib.h>
-   #include <time.h>
-   #define SIZE  100
    
    #define maxlen 1000
    typedef int Datatype;
@@ -13,7 +11,7 @@
    } SeqQueue;
    SeqQueue *q;
    
-   SeqQueue  *InitQueue (SeqQueue *Q)
+   SeqQueue  *InitQueue (SeqQueue *Q)//初始化一个新队列
    {
        Q->front = 0;
        Q->rear = 0;
@@ -65,23 +63,22 @@
    
    int main()
    {
-       q=(SeqQueue *)malloc(sizeof(SeqQueue));
-       q=InitQueue(q);
+       q=(SeqQueue *)malloc(sizeof(SeqQueue));//开辟队列空间
+       q=InitQueue(q);//初始化队列
    
        int N,num;
        scanf("%d",&N);
-       while(N--)
+       while(N--)//下达N个指令
        {
-           int order;
+           int order;//指令的代号
            scanf("%d",&order);
            switch (order)
            {
-   
-           case 1:
+           case 1://入队
                scanf("%d",&num);
                Add(q,num);
                break;
-           case 2:
+           case 2://出队并输出
                if(QueueEmpty(q))
                {
                    printf("no");
@@ -94,7 +91,7 @@
                    printf("%d\n",num);
                }
                break;
-           case 3:
+           case 3://计算队列中个数并输出
                if(q->front<=q->rear)
                {
                    printf("%d\n",(q->rear)-(q->front));
@@ -111,15 +108,13 @@
        return 0;
    }
    ```
-
+   
 2. ```c
    #include <stdio.h>
    #include <stdlib.h>
-   #include <time.h>
-   #define SIZE  100
    
    #define maxlen 1000
-   typedef char Datatype;
+   typedef char Datatype;//储存的数据为char类型
    typedef struct
    {
        Datatype data[maxlen];//长度为maxlen的数组
@@ -186,24 +181,24 @@
        int cnt=0;
        while((ch=getchar())!='?')
        {
-           Add(q,ch);
-           cnt++;
+           Add(q,ch);//向队列中压入字符
+           cnt++;//计算字符个数
        }
-       int first=q->front;
-       int last=q->rear;
-       for(int i=0;i<cnt/2-1;i++)
+       for(int i=0; i<cnt/2-1; i++)
        {
-           if(q->data[first+1+i]!=q->data[last-i])
+           //从前后向中间一一对比
+           if(q->data[q->front+1+i]!=q->data[q->rear-i])
            {
+               //出现一个不匹配则返回
                printf("此字符串不是回文");
                return 0;
            }
-       }
+       }//全部匹配 则是回文
        printf("此字符串是回文");
        return 0;
    }
    ```
-
+   
 3. ```c
    #include<iostream>
    #include<cstring>
@@ -247,4 +242,211 @@
    }
    ```
 
-4. 
+4. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   
+   #define SIZE  100
+   
+   #define maxlen 1000
+   typedef int Datatype;
+   typedef struct
+   {
+       Datatype data[maxlen];//长度为maxlen的数组
+       int front,rear;//元素对应的下标
+   } SeqQueue;
+   SeqQueue *qm,*qn;
+   
+   SeqQueue  *InitQueue (SeqQueue *Q)
+   {
+       Q->front = 0;
+       Q->rear = 0;
+       return Q;
+   }
+   int   QueueEmpty(SeqQueue *Q)
+   {
+       if(Q->front == Q->rear)
+           return 1;
+       else
+           return 0; //队空时返回1，不空返回0
+   }
+   int  QueueFull (SeqQueue *Q)
+   {
+       if(Q->front == (Q->rear + 1)%maxlen)
+           return 1;
+       else
+           return 0; //队满时返回1，不满返回0
+   }
+   Datatype GetHead (SeqQueue   *Q)
+   {
+       Datatype     x ;
+       if (QueueEmpty(Q) )
+           return (-1) ;
+       else
+       {
+           x = Q->data[(Q->front+1)%maxlen];
+           return   x ;
+       }
+   }
+   void Add (SeqQueue *Q,Datatype x)
+   {
+       if(!QueueFull(Q))  //若队不满，则进行入队运算
+       {
+           Q->rear = (Q->rear + 1)%maxlen;
+           Q->data[Q->rear] = x;
+       }
+       else
+           printf("queue full");
+   }
+   void  Delete (SeqQueue *Q)
+   {
+       if(!QueueEmpty(Q)) //若队不空，则进行出队运算
+           Q->front = (Q->front + 1)%maxlen;
+   
+       else
+           printf("queue empty");
+   }
+   int main()
+   {
+       int m,n,k;
+       scanf("%d %d",&m,&n);
+       scanf("%d",&k);
+   
+       qm=(SeqQueue *)malloc(sizeof(SeqQueue));
+       qn=(SeqQueue *)malloc(sizeof(SeqQueue));
+       qm=InitQueue(qm);
+       qn=InitQueue(qn);
+   
+       for(int a=1;a<=m;a++)
+           Add(qm,a);
+       for(int a=1;a<=n;a++)
+           Add(qn,a);
+   
+       while(k--)
+       {
+           printf("%d %d\n",GetHead(qm),GetHead(qn));
+           Add(qm,GetHead(qm));
+           Add(qn,GetHead(qn));
+           Delete(qm);
+           Delete(qn);
+       }
+       return 0;
+   }
+   ```
+
+5. ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   
+   #define SIZE  100
+   
+   #define maxlen 1000
+   typedef int Datatype;
+   typedef struct
+   {
+       Datatype data[maxlen];//长度为maxlen的数组
+       int front,rear;//元素对应的下标
+   } SeqQueue;
+   SeqQueue *q;
+   
+   SeqQueue  *InitQueue (SeqQueue *Q)
+   {
+       Q->front = 0;
+       Q->rear = 0;
+       return Q;
+   }
+   int   QueueEmpty(SeqQueue *Q)
+   {
+       if(Q->front == Q->rear)
+           return 1;
+       else
+           return 0; //队空时返回1，不空返回0
+   }
+   int  QueueFull (SeqQueue *Q)
+   {
+       if(Q->front == (Q->rear + 1)%maxlen)
+           return 1;
+       else
+           return 0; //队满时返回1，不满返回0
+   }
+   Datatype GetHead (SeqQueue   *Q)
+   {
+       Datatype     x ;
+       if (QueueEmpty(Q) )
+           return (-1) ;
+       else
+       {
+           x = Q->data[(Q->front+1)%maxlen];
+           return   x ;
+       }
+   }
+   void Add (SeqQueue *Q,Datatype x)
+   {
+       if(!QueueFull(Q))  //若队不满，则进行入队运算
+       {
+           Q->rear = (Q->rear + 1)%maxlen;
+           Q->data[Q->rear] = x;
+       }
+       else
+           printf("queue full");
+   }
+   void  Delete (SeqQueue *Q)
+   {
+       if(!QueueEmpty(Q)) //若队不空，则进行出队运算
+           Q->front = (Q->front + 1)%maxlen;
+   
+       else
+           printf("queue empty");
+   }
+   int check(int num)
+   {
+       if(num%7==0)
+           return 1;
+       while(num)
+       {
+           int tmp=num%10;
+           if(tmp==7)
+               return 1;
+           num/=10;
+       }
+       return 0;
+   }
+   int main()
+   {
+       int m,n,t;
+       scanf("%d %d %d",&n,&m,&t);
+       char name[20][20];
+       for(int i=1; i<=n; i++)
+           scanf("%s",name[i]);
+   
+       q=(SeqQueue *)malloc(sizeof(SeqQueue));
+       q=InitQueue(q);
+   
+       for(int i=1; i<=n; i++)
+           Add(q,i);
+       for(int i=1; i<m; i++)
+       {
+           Datatype tmp=GetHead(q);
+           Add(q,tmp);
+           Delete(q);
+       }
+       while(q->rear-q->front!=1)
+       {
+           if(check(t))
+           {
+               Delete(q);
+           }
+           else
+           {
+               Datatype tmp=GetHead(q);
+               Add(q,tmp);
+               Delete(q);
+           }
+           t++;
+       }
+       printf("%s",name[GetHead(q)]);
+       return 0;
+   }
+   ```
+
+   
