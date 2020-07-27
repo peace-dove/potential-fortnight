@@ -1,3 +1,5 @@
+//Copyright from Ba xmu
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
