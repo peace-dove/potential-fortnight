@@ -1,3 +1,4 @@
+%%Copyright from Dc.Shi
 clear; clc; 
 x0 = [762, 1, 0]; 
 tspan = [0, 100]; 
@@ -18,8 +19,8 @@ ylabel('X_3');
 xlabel('Time'); 
 
 function fx = f(t, x) %# ok 
-% ³õÊ¼»¯fx£¬ÐèÒªÎªÁÐÏòÁ¿ 
-fx = zeros(3, 1); % Èý¸öÎ¢·Ö·½³Ì×é 
+% åˆå§‹åŒ–fxï¼Œéœ€è¦ä¸ºåˆ—å‘é‡ 
+fx = zeros(3, 1); % ä¸‰ä¸ªå¾®åˆ†æ–¹ç¨‹ç»„ 
 fx(1) = -0.00218.* x(1)*x(2); 
 fx(2) = 0.00218*x(1)*x(2)-0.44*x(2);
 fx(3) = 0.44*x(2);
