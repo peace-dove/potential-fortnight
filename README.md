@@ -27,4 +27,4 @@
 ###### learn together live together
 > seem to become a  burden
 ### Focus on Mathematical Modeling
-###### learn LaTeX now
+###### learn LaTeX now and LaTeX is really a fantastic tool
