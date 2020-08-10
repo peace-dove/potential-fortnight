@@ -28,3 +28,4 @@
 > seem to become a  burden
 ### Focus on Mathematical Modeling
 ###### learn LaTeX now and LaTeX is really a fantastic tool
+###### learn and write LaTeX everyday!
