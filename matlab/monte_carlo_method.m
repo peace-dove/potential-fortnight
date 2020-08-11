@@ -1,11 +1,12 @@
-%% Çå¿Õ»·¾³±äÁ¿
+%% learn from other people
+%% æ¸…ç©ºç¯å¢ƒå˜é‡
 clc
 clear
-%% Monte Carlo·½·¨¼ÆËã¦Ğ
+%% Monte Carloæ–¹æ³•è®¡ç®—Ï€
 r=1;
 center_x=1;
 center_y=1;
-num=100000;%Ëæ»úÑù±¾Êı
+num=100000;%éšæœºæ ·æœ¬æ•°
 s=rng;
 rng(s);
 sample_point=2*rand(2,num);
@@ -17,6 +18,6 @@ for i=1:num
     end
 end
 my_pi=total_in/num*4;
-fprintf('Result:\n¦Ğ=%.4f\n',my_pi);
+fprintf('Result:\nÏ€=%.4f\n',my_pi);
 error=abs((pi-my_pi)/pi);
-fprintf('Error£º%.4f\n',error);
+fprintf('Errorï¼š%.4f\n',error);
