@@ -20,6 +20,7 @@
 ###### in the university what need to do most is learning professional skills and knowledge
 
 ### Learn car driving. Fighting!
+###### I got it! I made it!
 ### Don't forget to learn English every day. 
 ###### this is a task worth of keeping.
 ###### finish the tsak and enjoy the holiday!
@@ -29,3 +30,4 @@
 ### Focus on Mathematical Modeling
 ###### learn LaTeX now and LaTeX is really a fantastic tool
 ###### learn and write LaTeX everyday!
+###### forget to go on
