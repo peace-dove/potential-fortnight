@@ -15,7 +15,7 @@
 ### Focus on one sport like bicycling and keep healthy
 ###### keep walking every night after dinner enjoy the evening
 ### Rember to read whatever the book is
-###### keep reading...
+###### keep reading... using kindle feel so nice. 
 ### To balance learning and what needs in working
 ###### in the university what need to do most is learning professional skills and knowledge
 
