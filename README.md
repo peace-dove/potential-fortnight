@@ -12,6 +12,8 @@
 ###### plz learn how to work and how to learn
 ### Suddenly be interested in installation of computer
 ###### reinstall the cpu and RAM and clear the mainboard
+###### but can't light on the scream due to hdml
+
 ### Focus on one sport like bicycling and keep healthy
 ###### keep walking every night after dinner enjoy the evening
 ### Rember to read whatever the book is
