@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\title{\heiti 作业8}
+\author{\kaishu 把徐进}
+\date{\kaishu\today}
+
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+	\maketitle
+	\section{最快下山道路}
+	对于下山的时候走台阶的时候不仅速度慢且非常危险的问题，可以通过设计一个滑滑梯让人仅在受重力的情况之下最快到达山下.诚然这一设计成本较高，对山体及环境存在较大破坏作用，对于部分游客不适用.为了研究最速降线，所以对这一问题进行研究.
+	
+	假设乘坐滑滑梯的起点和终点在同一铅直平面，将乘客视为质点，仅用考虑在重力作用下产生的运动，而忽略一切摩擦阻力.其中，质点的质量为$m$，重力加速度大小为$g$，下落的铅直高度为$y$，依照能量守恒定律可得
+	\begin{equation}
+		mgy=\frac{1}{2}mv^2
+	\end{equation}
+	解之得速度与高度的关系为$v=\sqrt{2gy}$.为了寻找下降的曲线，也即滑滑梯的曲线轨迹，假设曲线为$s$，并建立一个坐标系，保持$x$轴水平，$y$轴竖直向下，则可得弧微分关系式
+	\begin{equation}
+		\frac{\mathrm{d}s}{\mathrm{d}x}=\sqrt{1+y'^2}
+	\end{equation}
+	由运动学知识可得，速度和弧线及时间之间的关系为
+	\begin{equation}
+		v=\frac{\mathrm{d}s}{\mathrm{d}t}
+	\end{equation}
+	联立上三式可得时间和$x$的微分关系式为
+	\begin{equation}
+	\mathrm{d}t=\frac{\mathrm{d}s}{\sqrt{2gy}}=\frac{\sqrt{1+y'^2}}{\sqrt{2gy}}\mathrm{d}x
+	\end{equation}
+	将这个式子进行积分可得两点之间的运动时间
+	\begin{equation}
+	t[y(x)]=\frac{1}{\sqrt{2g}}\int_{0}^{x_1}\frac{\sqrt{1+y'^2}}{\sqrt{2gy}}\mathrm{d}x
+	\end{equation}
+	这也即是函数$y(x)$的泛函.其中有初始条件也即边界约束条件为$y(0)=0,y(x_1)=y_1$，即分别是起点和终点的坐标，这也将问题转化为一个求解泛函的极值问题，也即是变分法问题.由变分法知识可得函数$F=\frac{\sqrt{1+y'^2}}{\sqrt{2gy}}$，代入欧拉方程关系式$F-y'F_{y'}=c$并化简可得关系式
+	\begin{equation}
+	\sqrt{\frac{1+y'^2}{y}}-\frac{y'^2}{\sqrt{y(1+y'^2)}}=C
+	\end{equation}
+	化简通分之后可得$y(1+y'^2)=c$.即需要继续利用求解微分方程的方法求解.在上面的式子中，$C$和$c$一应表示常数，且相互是独立的、无关的.
+	
+	求解微分方程.得到等式$\mathrm{d}x=\sqrt{\frac{y}{c-y}}\mathrm{d}y$，进一步利用换元法，令$\sqrt{\frac{y}{c-y}}=\tan t$可得$y=c\sin^2 t$，因此有$\mathrm{d}y=2c\sin t\cos t\mathrm{d}x$，所以有$\mathrm{d}x=\tan t\mathrm{d}y=2c\sin^2t\mathrm{d}t$.将关系式以及初始条件代入可以求解得到
+	\begin{equation}
+	\begin{cases}
+	x=\frac{c}{2}(2t-\sin t)\\
+	y=\frac{c}{2}(1-\cos 2t)
+	\end{cases}
+	\end{equation}
+	这即为曲线轨迹与时间的关系式.为了美观，作了一定的等价变形操作.由数学知识可以发现这即为摆线，具体阐述为一个半径为$\frac{c}{2}$的圆在$x$轴上滚动，其上固定一点的轨迹，而在最速降线的问题中这一点正是从起始点出发并经过终点而形成了最速降线曲线.
+	
+	值得注意的是，在现实生活中这样的设计并不能算实际或者高效，毕竟这对于身体有所不适的游客并不适用.因此只做建立分析模型之用.
+	\section{火箭飞行问题}
+	假设一质量为$m$的火箭水平飞行，飞行距离为$s(t)$，升力$L$和重力$mg$相平衡，所以运动主要受到空气阻力$R$的作用.研究发现空气阻力$R$与火箭飞行速度$v=\frac{\mathrm{d}s}{\mathrm{d}t}$有如下关系
+	\begin{equation}
+	R=av^2+bL^2
+	\end{equation}
+	对问题进行推导.根据牛顿第二定律可得
+	\begin{equation}
+	R=m\frac{\mathrm{d}v}{\mathrm{d}t}
+	\end{equation}
+	化简变形后得到$m\int_{v_0}^{v}\frac{\mathrm{d}v}{av^2+bL^2}=\int_{0}^{t}\mathrm{d}t$，对该式积分可得
+	\begin{equation}
+	t=\frac{m}{L}\sqrt{\frac{a}{b}}\arctan {\frac{v}{L}\sqrt{\frac{a}{b}}}-C
+	\end{equation}
+	其中常数$C=\frac{m}{L}\sqrt{\frac{a}{b}}\arctan {\frac{v_0}{L}\sqrt{\frac{a}{b}}}$是初始速度代入的结果，用常数作了一个替代.已经建立了时间和速度的函数关系，接着利用公式$v=\frac{\mathrm{d}s}{\mathrm{d}t}$即可以得到分析结果.特殊的，当时间趋向于无穷时，速度存在极值为$v=\frac{\pi L}{2}\sqrt{\frac{b}{a}}$.当然，利用泛函的分析应该能够更加便捷地完成方程的分析.而由于泛函和变分法并没有系统学习，所以正在学习中，因而选取部分完成.
+\end{document}
