@@ -35,3 +35,6 @@
 ###### forget to go on
 ### Think about mathematic modeling
 ###### Try to make it. Learn hard to win it. Think with great caution. 
+
+
+### Welcome new friends to XMU. 
