@@ -42,3 +42,4 @@
 ###### Devote myself to volunteer work. Thanks to the GREAT community center. 
 ###### Think about something. Women are horrible. Really. 
 ###### Get new knowledge of SE (save energy). 
+###### Ready to return to school. 
