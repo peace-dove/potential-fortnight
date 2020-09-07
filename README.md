@@ -42,4 +42,4 @@
 ###### Devote myself to volunteer work. Thanks to the GREAT community center. 
 ###### Think about something. Women are horrible. Really. 
 ###### Get new knowledge of SE (save energy). 
-###### Get prepared. Ready to return to school. Prepare my luggage. Prepare myself. 
+###### Get prepared. Ready to return to school. Prepare my luggage. Prepare myself. Complex thought. 
