@@ -43,3 +43,4 @@
 ###### Think about something. Women are horrible. Really. 
 ###### Get new knowledge of SE (save energy). 
 ###### Get prepared. Ready to return to school. Prepare my luggage. Prepare myself. Complex thought. 
+###### Return to domitory. 
