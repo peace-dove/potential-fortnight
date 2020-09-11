@@ -44,4 +44,4 @@
 ###### Get new knowledge of SE (save energy). 
 ###### Get prepared. Ready to return to school. Prepare my luggage. Prepare myself. Complex thought. 
 ###### Return to domitory. Various things. 
-###### Tired but meaningful. 
+###### Tired but meaningful. Deal with some things. 
