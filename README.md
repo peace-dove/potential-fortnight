@@ -45,4 +45,4 @@
 ###### Get prepared. Ready to return to school. Prepare my luggage. Prepare myself. Complex thought. 
 ###### Return to dormitory. Various things. 
 ###### Tired but meaningful. Deal with some things. Feel happy and complex. Dont't be stuck in the dormitory. 
-###### Though feeling tired, keep optimistic and hold on. 
+###### Though feeling tired, keep optimistic and hold on. Fighting. 
