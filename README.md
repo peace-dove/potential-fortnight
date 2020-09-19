@@ -46,3 +46,4 @@
 ###### Return to dormitory. Various things. 
 ###### Tired but meaningful. Deal with some things. Feel happy and complex. Dont't be stuck in the dormitory. 
 ###### Though feeling tired, keep optimistic and hold on. Fighting. New knowledge get like html and know software like HBuilderX. 
+###### Prepare for English. Harbour hope in the heart. 
