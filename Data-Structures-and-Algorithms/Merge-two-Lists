@@ -1,0 +1,142 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct node
+{
+    int data;
+    struct node *next;
+} sqlist;
+typedef struct node *List;
+/*
+List creat()
+{
+    List head=NULL,rear=head;
+    int c;
+    scanf("%d",&c);
+    while(c)
+    {
+        if(c==-1)
+            break;
+        else
+        {
+            List tmp;
+            tmp=(List)malloc(sizeof(struct node));
+            tmp->data=c;
+            tmp->next=NULL;
+            rear->next=tmp;
+            rear=tmp;
+        }
+        scanf("%d",&c);
+    }
+    List t;
+    t=head->next;
+    free(head);
+    return t;
+}*/
+List creat()
+{
+    List head=NULL, tail=NULL;
+    int t;
+    scanf("%d",&t);
+    while(t!=-1)
+    {
+        List temp=(List)malloc(sizeof(List));
+        temp->data=t;
+        temp->next=NULL;
+        if(tail==NULL)
+            head=tail=temp;
+        else
+        {
+            tail->next = temp;
+            tail=temp;
+        }
+        scanf("%d",&t);
+    }
+    return head;
+}
+List merge(List la,List lb)
+{
+    List head,rear,pa,pb;
+    head=rear=NULL;
+    pa=la,pb=lb;
+    if(!pa&&!pb)
+        return NULL;
+    if(!pa)
+        return pb;
+    if(!pb)
+        return pa;
+    while(pa&&pb)
+    {
+        if(pa->data<=pb->data)
+        {
+            List tmp;
+            tmp=(List)malloc(sizeof(struct node));
+            tmp->data=pa->data;
+            tmp->next=NULL;
+            if(rear==NULL)
+                head=rear=tmp;
+            else
+            {
+                rear->next=tmp;
+                rear=tmp;
+            }
+            pa=pa->next;
+        }
+        else
+        {
+            List tmp;
+            tmp=(List)malloc(sizeof(struct node));
+            tmp->data=pb->data;
+            tmp->next=NULL;
+            if(rear==NULL)
+                head=rear=tmp;
+            else
+            {
+                rear->next=tmp;
+                rear=tmp;
+            }
+            pb=pb->next;
+        }
+    }
+    while(pa)
+    {
+        rear->next=pa;
+        rear=pa;
+        pa=pa->next;
+    }
+    while(pb)
+    {
+        rear->next=pb;
+        rear=pb;
+        pb=pb->next;
+    }
+
+    return head;
+}
+void print(List l)
+{
+    if(l==NULL)
+    {
+        printf("NULL");
+        return ;
+    }
+
+    List p=l;
+    while(p)
+    {
+        printf("%d",p->data);;
+        if(p->next)
+            printf(" ");
+        p=p->next;
+    }
+}
+int main()
+{
+    List la,lb,lc;
+    la=creat();
+    lb=creat();
+    lc=merge(la,lb);
+    print(lc);
+
+    return 0;
+}
