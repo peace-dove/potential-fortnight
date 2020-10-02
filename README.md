@@ -50,4 +50,4 @@
 ###### Keep learning data structures and algorithms. Learning. 
 
 ### Keep learning HTML and CSS. Happy. 
-###### Prepare for travelling.
+###### Prepare for travelling. Complex thought. 
