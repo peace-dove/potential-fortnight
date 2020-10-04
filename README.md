@@ -51,3 +51,4 @@
 
 ### Keep learning HTML and CSS. Happy. 
 ###### Prepare for travelling. Complex thought. Complex tasks. 
+###### Learning and working. 
