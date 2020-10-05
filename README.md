@@ -50,5 +50,5 @@
 ###### Keep learning data structures and algorithms. Learning. 
 
 ### Keep learning HTML and CSS. Happy. 
-###### Prepare for travelling. Complex thought. Complex tasks. 
+###### Prepare for travelling. Complex thought. Deal with complex tasks. 
 ###### Learning and working. 
