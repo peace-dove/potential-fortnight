@@ -51,4 +51,4 @@
 
 ### Keep learning HTML and CSS. Happy. 
 ###### Prepare for travelling. Complex thought. Deal with complex tasks. 
-###### Learning and working. Having meal is of vital importance. 
+###### Learning and working. Having meal is of vital importance. Fulfill accomplishing my tasks. 
