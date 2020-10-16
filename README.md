@@ -36,7 +36,6 @@
 ### Think about mathematic modeling
 ###### Try to make it. Learn hard to win it. Think with great caution. 
 
-
 ### Welcome new friends to XMU. 
 ###### First PR although it's just a pencil-mistake. Feel happy. 
 ###### Devote myself to volunteer work. Thanks to the GREAT community center. 
@@ -53,4 +52,4 @@
 ###### Prepare for travelling. Complex thought. Deal with complex tasks. 
 ###### Learning and working. Having meal is of vital importance. Fulfill accomplishing my tasks. Deal with friendship. 
 ###### Changed learning planning. Follow the heart. 
-###### Pop up new and initial ideas. Keep going. 
+###### Pop up new and initial ideas. Keep going. Evening class. 
