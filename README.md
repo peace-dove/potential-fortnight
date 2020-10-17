@@ -52,4 +52,4 @@
 ###### Prepare for travelling. Complex thought. Deal with complex tasks. 
 ###### Learning and working. Having meal is of vital importance. Fulfill accomplishing my tasks. Deal with friendship. 
 ###### Changed learning planning. Follow the heart. 
-###### Pop up new and initial ideas. Keep going. Evening class. 
+###### Pop up new and initial ideas. Keep going. Evening class. The weekend deserves to be well planed. 
