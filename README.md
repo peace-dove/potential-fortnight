@@ -53,4 +53,4 @@
 ###### Learning and working. Having meal is of vital importance. Fulfill accomplishing my tasks. Deal with friendship. 
 ###### Changed learning planning. Follow the heart. 
 ###### Pop up new and initial ideas. Keep going. Evening class. The weekend deserves to be well planed. 
-###### Learn more about kmp. 
+###### Learn more about kmp. Enjoy learning. 
