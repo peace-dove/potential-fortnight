@@ -54,3 +54,5 @@
 ###### Changed learning planning. Follow the heart. 
 ###### Pop up new and initial ideas. Keep going. Evening class. The weekend deserves to be well planed. 
 ###### Learn more about kmp. Enjoy learning. Don't forget to reflect myself. 
+
+### The weekend
