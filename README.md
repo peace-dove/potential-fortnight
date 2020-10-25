@@ -29,6 +29,7 @@
 ###### live with brother
 ###### learn together live together
 > seem to become a  burden
+
 ### Focus on Mathematical Modeling
 ###### learn LaTeX now and LaTeX is really a fantastic tool
 ###### learn and write LaTeX everyday!
@@ -56,3 +57,4 @@
 ###### Learn more about kmp. Enjoy learning. Don't forget to reflect myself. 
 
 ### The weekend
+###### Work for the meeting. 
