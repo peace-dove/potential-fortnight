@@ -57,4 +57,4 @@
 ###### Learn more about kmp. Enjoy learning. Don't forget to reflect myself. 
 
 ### The weekend
-###### Work for the meeting. 
+###### Work for the meeting. Arrange for the classes and exercise. 
