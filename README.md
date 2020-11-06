@@ -58,4 +58,4 @@
 
 ### The weekend
 ###### Work for the meeting. Arrange for the classes and exercise. 
-###### Learn about Multisim. Think more and try more. Keep humble and going all the time. 
+###### Learn about Multisim. Think more and try more. Keep humble and going all the time. Balance the time. 
