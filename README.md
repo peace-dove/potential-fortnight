@@ -59,4 +59,4 @@
 ### The weekend
 ###### Work for the meeting. Arrange for the classes and exercise. 
 ###### Learn about Multisim. Think more and try more. Keep humble and going all the time. Balance the time. 
-###### Get prepared. Step on step on. 
+###### Get prepared. Step on step on. Continue fighting and going. 
